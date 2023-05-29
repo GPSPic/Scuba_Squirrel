@@ -1,7 +1,7 @@
 ### Deep Sea
 
 Android/iOS game with React Native Game Engine, TypeScript, Java, Spring and PostgreSQL.
-You are a diver, exploring oceans, looking to reach ever deeper. However, the sea is uncaring, and it is on you to manage you descent. If you don't, you might not make it back up...
+You are a diver, exploring oceans, looking to reach ever deeper. However, the sea is uncaring, and it is on you to manage your descent. If you don't, you might not make it back up...
 
 ### MVP
 
