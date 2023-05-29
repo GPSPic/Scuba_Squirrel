@@ -6,7 +6,7 @@ You are a diver, exploring oceans, looking to reach ever deeper. However, the se
 ### MVP
 
 - Display a diver and be able to move them up/down and stop in the ocean. 
-- The Diver has diving gear and a currency they can spend in the shop.
+- The Diver has diving gear (air tank, fins) and a currency they can spend in the shop.
 - A store with new diving gear for a price.
 - Display diver's current depth.
 - The diver has an air allowance that diminishes with time and a pressure threshold that increases while moving and descreases while standing still.
@@ -21,6 +21,7 @@ You are a diver, exploring oceans, looking to reach ever deeper. However, the se
 - Game stores and display 3 deepest points reached.
 - Occasional rock formations diver can mine (button mash) to partially replenish air.
 - Lower depths increase frequency of dangerous fishes.
+- Lower depths increase air cunsumption rates.
 - Vertical speed affects increase of pressure gauge.
 - Speed affects exertion and air consumption rate.
 - Current moving diver up and down.
