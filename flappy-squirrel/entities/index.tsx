@@ -10,6 +10,6 @@ export default (restart: any) => {
 
     return{
         physics: {engine, world},
-        Squirrel: Squirrel(world, 'pink',{x:50, y:200}, {height: 40, width:40})
+        Squirrel: Squirrel(world, 'orange',{x:50, y:200}, {height: 40, width:40})
     }
 }
