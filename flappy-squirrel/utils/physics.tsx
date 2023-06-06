@@ -16,8 +16,8 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
         // console.log(`hello press at (${touchX}, ${touchY})`)
         // console.log(`Squarrel is at: (${squirrelX}, ${squirrelY})`)
         
-        const xVelo = ((touchX - squirrelX) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*2
-        const yVelo = ((touchY - squirrelY) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*2
+        const xVelo = ((touchX - squirrelX) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*3
+        const yVelo = ((touchY - squirrelY) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*3
         // console.log(`x Numerator: ${touchX - squirrelX}`)
         // console.log(`y Numerator: ${touchY - squirrelY}`)
         // console.log (`xDenom = ${((touchX - squirrelX) + (touchY - squirrelY))}`)

@@ -5,10 +5,8 @@ import { View } from 'react-native'
 const Fish = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
-
     const xBody = props.body.position.x - widthBody/2;
     const yBody = props.body.position.y - heightBody/2;
-
     const color = props.color
 
     return (
@@ -19,11 +17,11 @@ const Fish = (props : any) => {
             position: 'absolute',
             left: xBody,
             top: yBody,
+            borderRadius: widthBody/2,
             width: widthBody,
             height: heightBody
         }}/>
     )
-
 }
 
 export default (world: any, color: string, pos: any, size: any): any => {
@@ -31,10 +29,11 @@ export default (world: any, color: string, pos: any, size: any): any => {
     const initialFish: any = Matter.Bodies.circle(
         pos.x,
         pos.y,
-        size.width,
+        size.radius,
         {
             label: 'Fish',
-            isStatic: true,
+            restitution: 1,
+            // isStatic: tfalserue,
         },
     )
     Matter.World.add(world, initialFish)

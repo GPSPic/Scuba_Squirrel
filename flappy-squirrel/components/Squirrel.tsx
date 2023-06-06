@@ -1,6 +1,6 @@
 import React from 'react'
 import Matter from 'matter-js'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 
 const Squirrel = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
@@ -23,7 +23,6 @@ const Squirrel = (props : any) => {
             height: heightBody
         }}/>
     )
-
 }
 
 export default (world: any, color: string, pos: any, size: any): any => {
@@ -33,7 +32,10 @@ export default (world: any, color: string, pos: any, size: any): any => {
         pos.y,
         size.width,
         size.height,
-        {label: 'Squirrel'}
+        {
+            label: 'Squirrel',
+            
+        }
     )
     Matter.World.add(world, initialSquirrel)
 
