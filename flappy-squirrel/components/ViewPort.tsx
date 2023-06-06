@@ -2,7 +2,7 @@ import React from 'react'
 import Matter from 'matter-js'
 import { View, Image } from 'react-native'
 
-const Squirrel = (props : any) => {
+const ViewPort = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
 
@@ -27,24 +27,22 @@ const Squirrel = (props : any) => {
 
 export default (world: any, color: string, pos: any, size: any): any => {
   
-    const initialSquirrel: any = Matter.Bodies.rectangle(
+    const initialViewPort: any = Matter.Bodies.rectangle(
         pos.x,
         pos.y,
         size.width,
         size.height,
         {
-            label: 'Squirrel',
-            isSensor: false,
-            isStatic: true,
-            // restitution: 0.5
+            label: 'ViewPort',
+            isSensor: true,
         }
     )
-    Matter.World.add(world, initialSquirrel)
+    Matter.World.add(world, initialViewPort)
 
     return {
-        body : initialSquirrel,
+        body : initialViewPort,
         color,
         pos,
-        renderer: <Squirrel/>
+        renderer: <ViewPort/>
     }
 }

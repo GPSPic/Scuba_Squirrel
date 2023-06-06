@@ -1,6 +1,7 @@
 import React from 'react'
 import Matter from 'matter-js'
 import { View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 
 const Wall = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
@@ -34,7 +35,8 @@ export default (world: any, color: string, pos: any, size: any): any => {
         size.height,
         {
             label: 'Wall',
-            isStatic: true
+            isStatic: false,
+            // restitution: 0.5
         }
     )
     Matter.World.add(world, initialWall)

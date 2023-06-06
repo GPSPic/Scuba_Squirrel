@@ -11,16 +11,20 @@ export default function App() {
     setRunning(true)
   }, [])
   return (
-    <View style={{flex: 1}}>
+    <>
+    <View style={{flex: 10, overflow: 'hidden'}}>
+    {/* <View> */}
       <GameEngine
       systems={[Physics]}
       entities={entities()}
       running = {running}
-        style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0,}}
+      style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}
       >
 
       </GameEngine>
         <StatusBar style="auto" hidden={true}/>
     </View> 
+    {/* <View style={{flex:1}}><Text>This is text</Text></View> */}
+    </>
   );
 }
