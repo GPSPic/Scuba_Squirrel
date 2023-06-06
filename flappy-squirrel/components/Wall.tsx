@@ -35,7 +35,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
         size.height,
         {
             label: 'Wall',
-            isStatic: false,
+            isStatic: true,
             // restitution: 0.5
         }
     )

@@ -1,8 +1,8 @@
 import React from 'react'
 import Matter from 'matter-js'
-import { View, Image } from 'react-native'
+import { View } from 'react-native'
 
-const Squirrel = (props : any) => {
+const Obstacle = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
 
@@ -13,8 +13,7 @@ const Squirrel = (props : any) => {
 
     return (
         <View style = {{
-            borderWidth:1,
-            borderColor:color,
+            backgroundColor: color,
             borderStyle: 'solid',
             position: 'absolute',
             left: xBody,
@@ -23,28 +22,27 @@ const Squirrel = (props : any) => {
             height: heightBody
         }}/>
     )
+
 }
 
 export default (world: any, color: string, pos: any, size: any): any => {
   
-    const initialSquirrel: any = Matter.Bodies.rectangle(
+    const initialObstacle: any = Matter.Bodies.rectangle(
         pos.x,
         pos.y,
         size.width,
         size.height,
         {
-            label: 'Squirrel',
-            isSensor: false,
-            isStatic: false,
-            // restitution: 0.5
+            label: 'Obstacle',
+            isStatic: true
         }
     )
-    Matter.World.add(world, initialSquirrel)
+    Matter.World.add(world, initialObstacle)
 
     return {
-        body : initialSquirrel,
+        body : initialObstacle,
         color,
         pos,
-        renderer: <Squirrel/>
+        renderer: <Obstacle/>
     }
 }

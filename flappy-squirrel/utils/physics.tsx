@@ -31,10 +31,10 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
         // console.log(`(xVelo , yVelo): (${xVelo}, ${yVelo}) \n\n`)
         // console.log(`------------------------------------------------------------------`)
 
-        // Matter.Body.setVelocity(entities.Squirrel.body,{
-        //     x:xVelo,
-        //     y:yVelo
-        // })
+        Matter.Body.setVelocity(entities.Squirrel.body,{
+            x:xVelo,
+            y:yVelo
+        })
         // Matter.Body.setVelocity(entities.ViewPort.body,{
         //     x:xVelo,
         //     y:yVelo
@@ -49,32 +49,32 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
         //     y:-yVelo
         // })
         // if(touchX > innerLeftWallX && touchX < innerRighttWallX){
-            Matter.Body.setVelocity(entities.WallLeft1.body,{
-                x:-xVelo,
-                y:-yVelo
-            })
-            Matter.Body.setVelocity(entities.WallRight1.body,{
-                x:-xVelo,
-                y:-yVelo
-            })
-            Matter.Body.setVelocity(entities.WallLeft2.body,{
-                x:-xVelo,
-                y:-yVelo
-            }) 
-            Matter.Body.setVelocity(entities.WallRight2.body,{
-                x:-xVelo,
-                y:-yVelo
-            })
+            // Matter.Body.setVelocity(entities.WallLeft1.body,{
+            //     x:-xVelo,
+            //     y:-yVelo
+            // })
+            // Matter.Body.setVelocity(entities.WallRight1.body,{
+            //     x:-xVelo,
+            //     y:-yVelo
+            // })
+            // Matter.Body.setVelocity(entities.WallLeft2.body,{
+            //     x:-xVelo,
+            //     y:-yVelo
+            // }) 
+            // Matter.Body.setVelocity(entities.WallRight2.body,{
+            //     x:-xVelo,
+            //     y:-yVelo
+            // })
         // }
     })   
     
-    Matter.Events.on(engine, 'collisionStart', (event) => {
-    Matter.Body.setVelocity(entities.WallLeft1.body, {x:0,y:0})
-    Matter.Body.setVelocity(entities.WallRight1.body, {x:0,y:0})
-    Matter.Body.setVelocity(entities.WallLeft2.body, {x:0,y:0})
-    Matter.Body.setVelocity(entities.WallRight2.body, {x:0,y:0})
+    // Matter.Events.on(engine, 'collisionStart', (event) => {
+    // Matter.Body.setVelocity(entities.WallLeft1.body, {x:0,y:0})
+    // Matter.Body.setVelocity(entities.WallRight1.body, {x:0,y:0})
+    // Matter.Body.setVelocity(entities.WallLeft2.body, {x:0,y:0})
+    // Matter.Body.setVelocity(entities.WallRight2.body, {x:0,y:0})
         
-    })
+    // })
 
 
     Matter.Engine.update(engine, time.delta)
