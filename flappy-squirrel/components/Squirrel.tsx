@@ -10,18 +10,29 @@ const Squirrel = (props : any) => {
     const yBody = props.body.position.y - heightBody/2;
 
     const color = props.color
+    const imageURL = require('../assets/Squirrel_animation.gif');
 
     return (
-        <View style = {{
-            borderWidth:1,
-            borderColor:color,
-            borderStyle: 'solid',
-            position: 'absolute',
-            left: xBody,
-            top: yBody,
-            width: widthBody,
-            height: heightBody
-        }}/>
+        // <View style = {{
+        //     borderWidth:1,
+        //     borderColor:color,
+        //     borderStyle: 'solid',
+        //     position: 'absolute',
+        //     left: xBody,
+        //     top: yBody,
+        //     width: widthBody,
+        //     height: heightBody
+        // }}/>
+        <Image
+        source={imageURL} // Replace with the correct path to the GIF image
+        style={{
+          position: 'absolute',
+          left: xBody,
+          top: yBody,
+          width: widthBody,
+          height: heightBody,
+        }}
+      />
     )
 }
 
@@ -33,9 +44,9 @@ export default (world: any, color: string, pos: any, size: any): any => {
         size.width,
         size.height,
         {
-            label: 'Squirrel',
+            label: 'Keith',
             isSensor: false,
-            isStatic: true,
+            isStatic: false,
             // restitution: 0.5
         }
     )
