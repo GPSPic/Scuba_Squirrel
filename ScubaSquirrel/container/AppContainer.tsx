@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Home from '../components/home/Home'
-import About from '../components/staticPages/About'
+import About from '../components/about/About'
 
 export default function AppContainer() {
   return (
@@ -9,7 +9,7 @@ export default function AppContainer() {
       <Text>AppContainer</Text>
       <Home/>
       <About/>
-      <Tutorial/>
+      {/* <Tutorial/> */}
     </View>
   )
 }
