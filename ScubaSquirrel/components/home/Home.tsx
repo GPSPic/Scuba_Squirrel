@@ -4,7 +4,7 @@ import StartButton from '../buttons/StartButton'
 import StatDisplay from '../gauges/StatDisplay'
 import Header from '../header/Header'
 
-export default function Home() {
+export default function Home({ navigation }: any) {
   return (
     <View style = {{flex: 1, backgroundColor: "red"}}>
       <Header/>
@@ -15,7 +15,7 @@ export default function Home() {
         <StatDisplay/>
       </View>
       <View style={styles.startButtonDisplay}>
-        <StartButton />
+        <StartButton navigation={navigation}/>
       </View>
     </View>
   )
