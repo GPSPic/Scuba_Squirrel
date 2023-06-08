@@ -1,11 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View , Button} from 'react-native'
 import React from 'react'
 
-export default function StartButton() {
+export default function StartButton({ navigation }: any) {
 
+  const homeRoute = () => {
+    navigation.navigate("About");
+  }
 
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={homeRoute}>
       <Text style={styles.buttonText}>Play</Text>
     </TouchableOpacity>
   )
