@@ -3,12 +3,12 @@ import React from 'react'
 
 export default function StartButton({ navigation }: any) {
 
-  const homeRoute = () => {
-    navigation.navigate("About");
+  const gameRoute = () => {
+    navigation.navigate("Game");
   }
 
   return (
-    <TouchableOpacity style={styles.button} onPress={homeRoute}>
+    <TouchableOpacity style={styles.button} onPress={gameRoute}>
       <Text style={styles.buttonText}>Play</Text>
     </TouchableOpacity>
   )
