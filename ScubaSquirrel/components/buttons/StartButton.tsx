@@ -1,12 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View , Button} from 'react-native'
 import React from 'react'
 
 export default function StartButton() {
-  return (
-    <View>
-      <Text>StartButton</Text>
-    </View>
-  )
-}
 
-const styles = StyleSheet.create({})
+
+  return (
+    <TouchableOpacity style={styles.button}>
+      <Text style={styles.buttonText}>Play</Text>
+    </TouchableOpacity>
+  )
+};
+
+const styles = StyleSheet.create({
+  button: {
+    borderWidth: 2,
+    borderColor: 'yellow',
+    borderRadius: 10,
+    backgroundColor: 'transparent',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  buttonText: {
+    color: 'yellow',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
