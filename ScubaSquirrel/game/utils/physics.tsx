@@ -72,6 +72,8 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
             if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 75){
                 // console.log(puffaFish.bounds.max.x - puffaFish.bounds.min.x)
                 Matter.Body.scale(puffaFish, 1.001, 1.001);
+
+                // After x ticks descale the fish
             }
             // Matter.Composite.remove(engine.world, puffaFish);
             // Matter.Body.setPosition(puffaFish, {x:1000000 , y:100000})
