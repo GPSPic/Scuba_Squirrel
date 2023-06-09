@@ -5,6 +5,7 @@ import Floor from '../gameObjects/Floor';
 import PuffaFish from '../gameObjects/PuffaFish';
 import { Dimensions } from 'react-native';
 import Obstacle from '../gameObjects/Obstacle';
+import Acorn from '../gameObjects/Acorn';
 
 
 export default (restart: any) => {
@@ -12,7 +13,7 @@ export default (restart: any) => {
 
     let world = engine.world;
 
-    engine.gravity.y = 0;
+    engine.gravity.y = 0.0;
 
     const screenWidth: number = Dimensions.get("window").width;
     const screenHeight: number = Dimensions.get("window").height;
@@ -26,8 +27,8 @@ export default (restart: any) => {
         // Fish: Fish(world, 'blue',{x:200, y:200}, {radius:20}),
         PuffaFish1: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
         PuffaFish2: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
-        Fish3: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
-        Fish4: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
+        PuffaFish3: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
+        PuffaFish4: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
         // Fish5: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
         // Fish6: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
         // Fish7: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
@@ -41,6 +42,7 @@ export default (restart: any) => {
         Obstacle2: Obstacle(world, 'brown',{x:screenWidth, y:screenHeight/2}, {height: 10, width: screenWidth}),
         Obstacle3: Obstacle(world, 'brown',{x:screenWidth/4, y:screenHeight*.75}, {height: 10, width: screenWidth}),
         Obstacle4: Obstacle(world, 'brown',{x:screenWidth, y:screenHeight*.85}, {height: 10, width: screenWidth}),
-        
+        Acorn1: Acorn(world, 'green', {x:screenWidth/8 , y:screenHeight/8 }, {radius:10 }),
+        Acorn2: Acorn(world, 'green', {x:screenWidth/8 , y:screenHeight*0.7 }, {radius:10 })  
     }
 }
