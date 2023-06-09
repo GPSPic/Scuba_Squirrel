@@ -67,7 +67,7 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
               puffaFish = bodyB;
             }
       
-            Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
+            // Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
             // need to add a guard to cap puffa bounds.
             if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 75){
                 // console.log(puffaFish.bounds.max.x - puffaFish.bounds.min.x)

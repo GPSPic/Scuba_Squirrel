@@ -52,7 +52,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
             label: 'Squirrel',
             isSensor: false,
             isStatic: false,
-            // restitution: 0.5
+            restitution: 1
         }
     )
     Matter.World.add(world, initialSquirrel)
