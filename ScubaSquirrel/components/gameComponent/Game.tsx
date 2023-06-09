@@ -33,7 +33,8 @@ export default function Game() {
 const styles = StyleSheet.create({
     content:{
       flex: 10,
-      border: 5 
+      border: 5,
+      backgroundColor: "darkturquoise" 
     },
     header:{
       flex: 1,
