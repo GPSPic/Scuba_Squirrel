@@ -22,8 +22,7 @@ export default (restart: any) => {
 
     return{
         physics: {engine, world},
-        Squirrel: Squirrel(world, 'orange',{x:screenWidth/2, y:30}, {height: 90, width:60}),
-        // ViewPort: ViewPort(world, 'green',{x:150, y:200}, {height: 60, width:60}),
+        Squirrel: Squirrel(world, 'orange',{x:screenWidth/2, y:30}, {height: 50, width:30}),
         // Fish: Fish(world, 'blue',{x:200, y:200}, {radius:20}),
         PuffaFish1: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
         PuffaFish2: PuffaFish(world, 'blue',{x:200, y:200}, {radius:20}),
