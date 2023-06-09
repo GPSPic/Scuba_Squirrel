@@ -92,6 +92,7 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
             }
             Matter.Composite.remove(engine.world, acorn)
             Matter.Body.setPosition(acorn, {x:1000000 , y:100000})
+            
           }
         }
       });
