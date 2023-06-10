@@ -2,13 +2,13 @@ import React from 'react'
 import Matter from 'matter-js'
 import { View, Image } from 'react-native'
 
-const PuffaFish = (props : any) => {
+const RegularFish = (props : any) => {
   const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
   const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
   const xBody = props.body.position.x - widthBody/2;
   const yBody = props.body.position.y - heightBody/2;
   const color = props.color
-  const imageURL = require('../../assets/fish/puffafish.png');
+  const imageURL = require('../../assets/fish/bluefish.png');
 
   return (
     <View>
@@ -29,21 +29,21 @@ const PuffaFish = (props : any) => {
 
 export default (world: any, color: string, pos: any, size: any): any => {
   
-  const initialPuffaFish: any = Matter.Bodies.circle(
+  const initialRegularFish: any = Matter.Bodies.circle(
     pos.x,
     pos.y,
     size.radius,
     {
-      label: 'PuffaFish',
+      label: 'RegularFish',
       restitution: 1,
     },
   )
-  Matter.World.add(world, initialPuffaFish)
+  Matter.World.add(world, initialRegularFish)
 
   return {
-    body : initialPuffaFish,
+    body : initialRegularFish,
     color,
     pos,
-    renderer: <PuffaFish/>
+    renderer: <RegularFish/>
   }
 }

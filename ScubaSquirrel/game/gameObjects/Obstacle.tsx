@@ -5,9 +5,14 @@ import { View } from 'react-native'
 const Obstacle = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
+    // const widthBody: number = props.body.size.width;
+    // const heightBody: number = props.body.size.height;
+    const xBody = props.body.position.x;
+    const yBody = props.body.position.y;
+    // const xBody = props.body.pos.x;
+    // const yBody = props.body.pos.y;
 
-    const xBody = props.body.position.x - widthBody/2;
-    const yBody = props.body.position.y - heightBody/2;
+    // console.log (`WB/HB/XB/YB: ${widthBody}/${heightBody}/${xBody}/${yBody}`)
 
     const color = props.color
 

@@ -11,25 +11,25 @@ export default function Game() {
   useEffect(() => {
     setRunning(true)
   }, [])
+
   return (
     <>
-    <View style={styles.header}>
-        <Header />
-    </View>
     <View style={styles.content}>
       <GameEngine
         systems={[Physics]}
         entities={entities()}
         running = {running}
-        style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}
+        style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0,}}
       >
       </GameEngine>
     <StatusBar style="auto" hidden={true}/>
     </View> 
+    <View style={styles.header}>
+        <Header />
+    </View>
     </>
   );
 }
-
 const styles = StyleSheet.create({
     content:{
       flex: 10,
