@@ -3,6 +3,7 @@ import React from 'react'
 import StartButton from '../buttons/StartButton'
 import StatDisplay from '../gauges/StatDisplay'
 import Header from '../header/Header'
+import Gear from '../gear/Gear'
 
 export default function Home({ navigation }: any) {
   return (

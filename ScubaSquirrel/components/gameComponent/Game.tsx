@@ -1,16 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { GameEngine } from 'react-native-game-engine';
 import entities from '../../game/entities';
 import { useState, useEffect } from 'react';
 import Physics from '../../game/utils/physics';
 import Header from '../header/Header';
+import Gear from '../gear/Gear';
 
 export default function Game() {
+
   const [running, setRunning] = useState(false)
+  const [currentAir, setCurrentAir] = useState(3000)
+
   useEffect(() => {
     setRunning(true)
   }, [])
+
   return (
     <>
     <View style={styles.header}>
@@ -21,11 +26,14 @@ export default function Game() {
         systems={[Physics]}
         entities={entities()}
         running = {running}
-        style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}
+        style={{position: 'absolute', top: 0, left: 0, bottom: 100, right: 0, overflow: 'hidden'}}
       >
       </GameEngine>
     <StatusBar style="auto" hidden={true}/>
     </View> 
+    <View style={{flex:1}}>
+      <Gear currentAir={currentAir}/>
+    </View>
     </>
   );
 }
@@ -40,3 +48,4 @@ const styles = StyleSheet.create({
       flex: 1,
     }
   })
+
