@@ -16,18 +16,18 @@ export default function StartButton({ navigation }: any) {
 
 const styles = StyleSheet.create({
   button: {
-    borderWidth: 3,
-    borderColor: 'yellow',
-    borderRadius: 15,
+    borderWidth: 5,
+    borderColor: '#feee00',
+    borderRadius: 20,
     backgroundColor: 'transparent',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    width: 200,
-    height: 80,
+    width: 300,
+    height: 100,
     justifyContent: 'center'
   },
   buttonText: {
-    color: 'yellow',
+    color: '#feee00',
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
