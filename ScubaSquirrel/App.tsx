@@ -18,7 +18,8 @@ const Stack = createNativeStackNavigator();
         <StatusBar style="auto" />
         <AppContainer />
       </View> */}
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Home'
+      screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Game" component={Game}/>

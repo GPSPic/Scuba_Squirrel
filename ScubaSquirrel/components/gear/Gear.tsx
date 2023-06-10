@@ -17,5 +17,6 @@ export default function Gear({ currentAir }) {
 const styles = StyleSheet.create({
     gearStyle: {
         backgroundColor: 'orange',
+        flex: 1,
     }
 })
