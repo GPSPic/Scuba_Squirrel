@@ -4,19 +4,28 @@ import React from 'react'
 export default function StatDisplay() {
   return (
     <View style={styles.statDisplay}>
-      <Text>StatDisplay</Text>
+      <Text style={styles.statText}>Deepest Reached: ***M</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     statDisplay: {
-        // flex: 1,
-        height: 50,
-        width: 100,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10,
-        backgroundColor: 'grey',
-    },
+        borderWidth: 2,
+        borderColor: 'yellow',
+        borderRadius: 20,
+        borderStyle: 'dashed',
+        backgroundColor: 'transparent',
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        width: 250,
+        height: 40,
+        color: '#feee00',
+      },
+    statText: {
+      color: '#feee00',
+      fontSize: 15,
+    }
 })
