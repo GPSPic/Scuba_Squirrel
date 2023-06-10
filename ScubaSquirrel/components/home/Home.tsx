@@ -26,14 +26,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-
-    backgroundColor: 'darkturquoise',
+    backgroundColor: '#5acffd',
 },
   statDisplayDisplay: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-
     backgroundColor: 'white',
 },
 })

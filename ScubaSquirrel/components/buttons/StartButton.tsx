@@ -9,23 +9,26 @@ export default function StartButton({ navigation }: any) {
 
   return (
     <TouchableOpacity style={styles.button} onPress={gameRoute}>
-      <Text style={styles.buttonText}>Play</Text>
+      <Text style={styles.buttonText}>PLAY</Text>
     </TouchableOpacity>
   )
 };
 
 const styles = StyleSheet.create({
   button: {
-    borderWidth: 2,
+    borderWidth: 3,
     borderColor: 'yellow',
-    borderRadius: 10,
+    borderRadius: 15,
     backgroundColor: 'transparent',
     paddingVertical: 10,
     paddingHorizontal: 20,
+    width: 200,
+    height: 80,
+    justifyContent: 'center'
   },
   buttonText: {
     color: 'yellow',
-    fontSize: 16,
+    fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
   },
