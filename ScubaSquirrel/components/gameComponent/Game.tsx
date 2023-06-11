@@ -8,6 +8,7 @@ import Header from '../header/Header';
 
 export default function Game() {
   const [running, setRunning] = useState(false)
+  const [acornCount, setAcornCount]=useState(0)
   // const [gameEngine, ,setGameEngine]:any = useState(null)
   useEffect(() => {
     setRunning(true)
@@ -15,7 +16,7 @@ export default function Game() {
   return (
     <>
     <View style={styles.header}>
-        <Header />
+        <Header acornCount = {acornCount}/>
     </View>
     <View style={styles.content}>
       <GameEngine
@@ -25,7 +26,12 @@ export default function Game() {
         running = {running}
         onEvent = {(e:any) => {
           switch(e.type){
-            case 'game_over' : setRunning(false)
+            case 'game_over' : 
+            setRunning(false)
+            break;
+            case 'collect_acorn': 
+            setAcornCount((prevAcornCount) => prevAcornCount + 1)
+            break;
             // gameEngine.stop()
           }
         }}

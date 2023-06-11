@@ -4,10 +4,10 @@ import Acorn from './Acorn'
 import Title from './Title'
 import MenuButton from '../buttons/MenuButton'
 
-export default function Header() {
+export default function Header({acornCount}) {
   return (
     <View style={styles.header}>
-      <Acorn></Acorn>
+      <Acorn acornCount = {acornCount}></Acorn>
       <Title></Title>
       <MenuButton></MenuButton>
     </View>
