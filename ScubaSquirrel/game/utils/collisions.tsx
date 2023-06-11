@@ -1,7 +1,7 @@
 import Matter, { World } from "matter-js";
 
 
-const handleCollision = (engine: any) => {
+const handleCollision = (engine: any, dispatch: any) => {
 
     Matter.Events.on(engine, 'collisionStart', (event) => {
         const collisionPairs = event.pairs;
@@ -25,7 +25,7 @@ const handleCollision = (engine: any) => {
                         puffaFish = bodyB;
                     }
                     
-                    // Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
+                    Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
                     // need to add a guard to cap puffa bounds.
                     if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 95){
                         // console.log(puffaFish.bounds.max.x - puffaFish.bounds.min.x)
@@ -52,6 +52,19 @@ const handleCollision = (engine: any) => {
                         Matter.Body.setPosition(acorn, {x:1000000 , y:100000})
                         
                     }
+                if (
+                    (bodyA.label === "Wall" && bodyB.label === "Squirrel") ||
+                    (bodyA.label === "Squirrel" && bodyB.label === "Wall")
+                    ) {
+                        if (bodyA.label === "Acorn") {
+                            acorn = bodyA;
+                            squirrel = bodyB;
+                        } else {
+                            squirrel = bodyA;
+                            acorn = bodyB;
+                        }
+                        dispatch({type : 'game_over'})
+                    }            
                 }
             });
     }

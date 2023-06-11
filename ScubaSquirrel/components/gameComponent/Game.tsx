@@ -8,6 +8,7 @@ import Header from '../header/Header';
 
 export default function Game() {
   const [running, setRunning] = useState(false)
+  // const [gameEngine, ,setGameEngine]:any = useState(null)
   useEffect(() => {
     setRunning(true)
   }, [])
@@ -18,9 +19,16 @@ export default function Game() {
     </View>
     <View style={styles.content}>
       <GameEngine
+        // ref= {(ref) => {setGameEngine(ref)}}
         systems={[Physics]}
         entities={entities()}
         running = {running}
+        onEvent = {(e:any) => {
+          switch(e.type){
+            case 'game_over' : setRunning(false)
+            // gameEngine.stop()
+          }
+        }}
         style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}
       >
       </GameEngine>
@@ -34,7 +42,7 @@ const styles = StyleSheet.create({
     content:{
       flex: 10,
       border: 5,
-      backgroundColor: "darkturquoise" 
+      // backgroundColor: "darkturquoise" 
     },
     header:{
       flex: 1,
