@@ -9,7 +9,8 @@ import Header from '../header/Header';
 export default function Game() {
   const [running, setRunning] = useState(false)
   const [acornCount, setAcornCount]=useState(0)
-  // const [gameEngine, ,setGameEngine]:any = useState(null)
+  const [gameEngine, setGameEngine] = useState(null)
+
   useEffect(() => {
     setRunning(true)
   }, [])
@@ -20,19 +21,22 @@ export default function Game() {
     </View>
     <View style={styles.content}>
       <GameEngine
-        // ref= {(ref) => {setGameEngine(ref)}}
+        ref={(ref) => { setGameEngine(ref) }}
         systems={[Physics]}
         entities={entities()}
         running = {running}
         onEvent = {(e:any) => {
           switch(e.type){
             case 'game_over' : 
-            setRunning(false)
+            setRunning(false);
+            setAcornCount(0);
+            gameEngine.stop()
             break;
             case 'collect_acorn': 
             setAcornCount((prevAcornCount) => prevAcornCount + 1)
+            gameEngine.swap(entities())
             break;
-            // gameEngine.stop()
+            
           }
         }}
         style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}

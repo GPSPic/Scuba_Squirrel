@@ -2,7 +2,7 @@ import Matter, { World } from "matter-js";
 
 
 const collidedPairs = new Set();
-  
+
 const handleCollision = (engine: any, dispatch: any) => {
 
     Matter.Events.on(engine, 'collisionStart', (event) => {
@@ -11,10 +11,12 @@ const handleCollision = (engine: any, dispatch: any) => {
         for (const collisionPair of collisionPairs) {
             const bodyA = collisionPair.bodyA;
             const bodyB = collisionPair.bodyB;
-            const pairId = `${bodyA.id}-${bodyB.id}`;
+            const pairId = `${collisionPair.id}`;
             let puffaFish;
             let squirrel;
             let acorn;
+            let wall;
+            let obstacle;
             
             if (
                 (bodyA.label === "PuffaFish" && bodyB.label === "Squirrel") ||
@@ -28,16 +30,12 @@ const handleCollision = (engine: any, dispatch: any) => {
                         puffaFish = bodyB;
                     }
                     
-                    // Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
-                    // need to add a guard to cap puffa bounds.
+                    Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
+                    
                     if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 95){
-                        // console.log(puffaFish.bounds.max.x - puffaFish.bounds.min.x)
                         Matter.Body.scale(puffaFish, 1.001, 1.001);
-                        
                         // After x ticks descale the fish
                     }
-                    // Matter.Composite.remove(engine.world, puffaFish);
-                    // Matter.Body.setPosition(puffaFish, {x:1000000 , y:100000})
                 }
                 
                 if (
@@ -59,6 +57,40 @@ const handleCollision = (engine: any, dispatch: any) => {
                         collidedPairs.add(pairId);
                         dispatch({ type: 'collect_acorn' });
                     }
+
+                if (
+                    (bodyA.label === "Squirrel" && bodyB.label === "Wall") ||
+                    (bodyA.label === "Wall" && bodyB.label === "Squirrel")
+                    ) {
+        
+                        if (bodyA.label === "Wall") {
+                            wall = bodyA;
+                            squirrel = bodyB;
+                        } else {
+                            squirrel = bodyA;
+                            wall = bodyB;
+                        }
+
+                        dispatch({ type: 'game_over' });
+                    }
+
+                if (
+                    (bodyA.label === "Squirrel" && bodyB.label === "Obstacle") ||
+                    (bodyA.label === "Obstacle" && bodyB.label === "Squirrel")
+                    ) {
+        
+                        if (bodyA.label === "Obstacle") {
+                            obstacle = bodyA;
+                            squirrel = bodyB;
+                        } else {
+                            squirrel = bodyA;
+                            obstacle = bodyB;
+                        }
+
+                        dispatch({ type: 'game_over' });
+                    }
+
+                
                 }
             });
     }

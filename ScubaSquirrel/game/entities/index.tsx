@@ -38,16 +38,16 @@ export default (restart: any) => {
         return obstaclesEntities
     }
 
-    // const randPuffaFish = randomFish();
-    // const randObstacle = randomObstacle();
+    const randPuffaFish = randomFish();
+    const randObstacle = randomObstacle();
     // console.log(`Puffa: ${randPuffaFish}`)
     // console.log(`Obstacle: ${randObstacle.length}`)
   
     return {
       physics: { engine, world },
       Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: 50, width: 30 }),
-      // ...randPuffaFish,
-      // ...randObstacle,rr
+      ...randPuffaFish,
+      ...randObstacle,
       PuffaFish1: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
     //   PuffaFish2: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
     //   PuffaFish3: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
@@ -66,7 +66,7 @@ export default (restart: any) => {
       Obstacle4: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight * .6 }, { height: 10, width: screenWidth }),
       Obstacle5: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight * .85 }, { height: 15, width: screenWidth }),
       
-      Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight / 8 }, { radius: 10 }),
+      // Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight / 8 }, { radius: 10 }),
       Acorn2: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight * 0.7 }, { radius: 10 })
     }
 }  
