@@ -20,25 +20,25 @@ const handleCollision = (engine: any, dispatch: any) => {
             let obstacle;
             let cave;
             
-            if (
-                (bodyA.label === "PuffaFish" && bodyB.label === "Squirrel") ||
-                (bodyA.label === "Squirrel" && bodyB.label === "PuffaFish")
-                ) {
-                    if (bodyA.label === "PuffaFish") {
-                        puffaFish = bodyA;
-                        squirrel = bodyB;
-                    } else {
-                        squirrel = bodyA;
-                        puffaFish = bodyB;
-                    }
+            // if (
+            //     (bodyA.label === "PuffaFish" && bodyB.label === "Squirrel") ||
+            //     (bodyA.label === "Squirrel" && bodyB.label === "PuffaFish")
+            //     ) {
+            //         if (bodyA.label === "PuffaFish") {
+            //             puffaFish = bodyA;
+            //             squirrel = bodyB;
+            //         } else {
+            //             squirrel = bodyA;
+            //             puffaFish = bodyB;
+            //         }
                     
-                    Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
+            //         Matter.Body.setVelocity(squirrel, { x: -2, y: 2 });
                     
-                    if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 95){
-                        Matter.Body.scale(puffaFish, 1.001, 1.001);
-                        // After x ticks descale the fish
-                    }
-                }
+            //         if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 95){
+            //             // Matter.Body.scale(puffaFish, 1.001, 1.001);
+            //             // After x ticks descale the fish
+            //         }
+            //     }
                 
                 if (
                     (bodyA.label === "Acorn" && bodyB.label === "Squirrel") ||
