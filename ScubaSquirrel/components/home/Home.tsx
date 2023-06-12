@@ -7,10 +7,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
-export default function Home({ navigation }: any) {
+export default function Home({ navigation, gameReload, acornCount }: any) {
   return (
     <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
-        <Header/>
+        <Header acornCount = {acornCount}/>
         <View style={styles.statDisplayContainer}>
           <StatDisplay/>
         </View>
@@ -18,7 +18,7 @@ export default function Home({ navigation }: any) {
             <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.image} />
         </View>
         <View style={styles.startButtonDisplay}>
-          <StartButton navigation={navigation}/>
+          <StartButton navigation={navigation} gameReload={gameReload}/>
         </View>
     </LinearGradient>
   )
