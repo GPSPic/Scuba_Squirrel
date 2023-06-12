@@ -1,8 +1,10 @@
 import React from 'react'
 import Matter from 'matter-js'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
+
 
 const Floor = (props : any) => {
+    const imageURL = require('../../assets/SandBottom.png');
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
 
@@ -12,15 +14,18 @@ const Floor = (props : any) => {
     const color = props.color
 
     return (
-        <View style = {{
-            backgroundColor: color,
-            borderStyle: 'solid',
+        <View>
+        <Image
+          source={imageURL} // Replace with the correct path to the GIF image
+          style={{
             position: 'absolute',
             left: xBody,
             top: yBody,
             width: widthBody,
-            height: heightBody
-        }}/>
+            height: heightBody,
+          }}
+        />
+      </View> 
     )
 
 }
