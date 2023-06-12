@@ -23,7 +23,6 @@ const Cave = (props : any) => {
           top: yBody,
           width: widthBody,
           height: heightBody,
-          backgroundColor: color,
         }}
       />
     </View>    

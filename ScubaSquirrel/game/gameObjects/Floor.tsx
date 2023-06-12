@@ -39,7 +39,8 @@ export default (world: any, color: string, pos: any, size: any): any => {
         size.height,
         {
             label: 'Floor',
-            isStatic: true
+            isStatic: true,
+            isSensor:true,
         }
     )
     Matter.World.add(world, initialFloor)

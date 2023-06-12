@@ -7,14 +7,10 @@ import Physics from '../../game/utils/physics';
 import Header from '../header/Header';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function Game() {
-  const [running, setRunning] = useState(false)
-  const [acornCount, setAcornCount]=useState(0)
+export default function Game({navigation, running, gameStop}: any) {
   const [gameEngine, setGameEngine] = useState(null)
+  const [acornCount, setAcornCount]=useState(0)
 
-  useEffect(() => {
-    setRunning(true)
-  }, [])
 
   return (
     <>
@@ -22,7 +18,7 @@ export default function Game() {
         <View style={styles.header}>
             <Header acornCount = {acornCount}/>
         </View>
-        <LinearGradient style = {styles.background} colors={['#13def4', '#000000']}start={{x:1, y:0}}end={{x:1, y:1}}>
+        <LinearGradient style = {styles.background} colors={['#13def4', '#08004c']}start={{x:1, y:0}}end={{x:1, y:1}}>
           <View style={styles.content}>
             <GameEngine
               ref={(ref) => { setGameEngine(ref) }}
@@ -32,14 +28,22 @@ export default function Game() {
               onEvent = {(e:any) => {
                 switch(e.type){
                   case 'game_over' : 
-                  // setRunning(false);
+                  gameStop();
                   setAcornCount(0);
                   // gameEngine.stop()
                   break;
                   case 'collect_acorn': 
                   setAcornCount((prevAcornCount) => prevAcornCount + 1)
-                  gameEngine.swap(entities())
-                  break;           
+                  // gameEngine.swap(entities())
+                  break;
+                  case 'win_con':
+                    // setBankedAcornCount
+                    setAcornCount(0);
+                    gameEngine.stop();
+                    gameStop();
+                    navigation.navigate('Win');
+                    gameEngine.swap(entities());
+
                 }
               }}
               style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}>
@@ -47,9 +51,9 @@ export default function Game() {
             <StatusBar style="auto" hidden={true}/>
           </View> 
         </LinearGradient>
-        <View style={styles.header}>
+        {/* <View style={styles.header}>
           <Header acornCount={acornCount}/>
-        </View>
+        </View> */}
       </LinearGradient>
     </>
   );

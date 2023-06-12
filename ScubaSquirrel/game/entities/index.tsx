@@ -22,7 +22,7 @@ export default (restart: any) => {
   const screenWidth: number = Dimensions.get("window").width;
   const screenHeight: number = Dimensions.get("window").height;
   const gameTop: number = screenHeight * 1/8;
-  const gameBottom: number = screenHeight * 6/8
+  const gameBottom: number = screenHeight * 7/8
 
   console.log(`SH, SH*6/8, SH/2: ${screenHeight}, ${screenHeight*6/8}, ${screenHeight/2}`)
 
@@ -70,21 +70,19 @@ export default (restart: any) => {
 
   return {
     physics: { engine, world },
-    Cave: Cave(world, 'pink', { x: screenWidth/2, y: screenHeight/2-(screenHeight/8) }, { height: 50, width: 60 }),
+    FloorBottom: Floor(world, 'yellow', { x: screenWidth / 2, y: screenHeight*7/8}, { height: 80, width: screenWidth - 20 }),
     WallLeft1: Wall(world, 'brown', { x: 0, y: screenHeight/2-(screenHeight/8) }, { height: screenHeight*6/8, width: 20 }),
     Roof: Roof(world,'green',{x:screenWidth/2, y:1},{height:2,width: screenWidth}),
     WallRight1: Wall(world, 'brown', { x: screenWidth, y: screenHeight/2 }, { height: screenHeight, width: 20 }),
-    FloorBottom: Floor(world, 'yellow', { x: screenWidth / 2, y: screenHeight*6/8}, { height: 80, width: screenWidth - 20 }),
     DK1: Obstacle(world, 'brown', { x: screenWidth / 8, y: screenHeight *0.25 }, { height: 40, width: screenWidth }),
     // DK2: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight *0.5 }, { height: 40, width: screenWidth }),
     // DK3: Obstacle(world, 'brown', { x: screenWidth / 4, y: screenHeight * .75 }, { height: 40, width: screenWidth }),
     DK4: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight * .6 }, { height: 40, width: screenWidth }),
-    
     // Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight / 8 }, { radius: 10 }),
     Acorn2: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight*6/8-20 }, { radius: 20 }),
+    Cave: Cave(world, 'pink', { x: screenWidth-60, y:(screenHeight/8)}, { height: 75, width: 90 }),
     Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: 50, width: 30 }),
     ...totalObstacle,
     // ...randomKelp()
-
   }
 }  

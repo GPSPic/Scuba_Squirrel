@@ -4,7 +4,7 @@ import Header from '../header/Header'
 import { LinearGradient } from 'expo-linear-gradient';
 import StartButton from '../buttons/StartButton';
 
-export default function Win() {
+export default function Win({navigation, gameReload}: any) {
   return (
     <LinearGradient style={styles.container} colors={['#79f8ff', '#0040a1']} start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}>
       <Header />
@@ -25,7 +25,7 @@ export default function Win() {
         </View>    
       </View>
       <View style={styles.content}>
-      <StartButton/>
+      <StartButton navigation={navigation} gameReload={gameReload}/>
       </View>
     </LinearGradient>
   );

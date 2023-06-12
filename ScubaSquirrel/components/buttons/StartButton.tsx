@@ -1,10 +1,11 @@
 import { StyleSheet, Text, TouchableOpacity, View , Button} from 'react-native'
 import React from 'react'
 
-export default function StartButton({ navigation }: any) {
+export default function StartButton({ navigation, gameReload }: any) {
 
   const gameRoute = () => {
     navigation.navigate("Game");
+    gameReload();
   }
 
   return (

@@ -1,4 +1,5 @@
 import Matter, { World } from "matter-js";
+import Cave from "../gameObjects/Cave";
 
 
 const collidedPairs = new Set();
@@ -17,6 +18,7 @@ const handleCollision = (engine: any, dispatch: any) => {
             let acorn;
             let wall;
             let obstacle;
+            let cave;
             
             if (
                 (bodyA.label === "PuffaFish" && bodyB.label === "Squirrel") ||
@@ -89,8 +91,21 @@ const handleCollision = (engine: any, dispatch: any) => {
 
                         dispatch({ type: 'game_over' });
                     }
+                if (
+                    (bodyA.label === "Squirrel" && bodyB.label === "Cave") ||
+                    (bodyA.label === "Cave" && bodyB.label === "Squirrel")
+                    ) {
+        
+                        if (bodyA.label === "Cave") {
+                            cave = bodyA;
+                            squirrel = bodyB;
+                        } else {
+                            squirrel = bodyA;
+                            cave = bodyB;
+                        }
 
-                
+                        dispatch({ type: 'win_con' });
+                    }
                 }
             });
     }
