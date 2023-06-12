@@ -1,10 +1,8 @@
 import React from 'react'
 import Matter from 'matter-js'
-import { View, Image } from 'react-native'
+import { View } from 'react-native'
 
-
-const Floor = (props : any) => {
-    const imageURL = require('../../assets/SandBottom.png');
+const Roof = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
 
@@ -14,40 +12,37 @@ const Floor = (props : any) => {
     const color = props.color
 
     return (
-        <View>
-        <Image
-          source={imageURL} // Replace with the correct path to the GIF image
-          style={{
+        <View style = {{
+            backgroundColor: color,
+            borderStyle: 'solid',
             position: 'absolute',
             left: xBody,
             top: yBody,
             width: widthBody,
-            height: heightBody,
-          }}
-        />
-      </View> 
+            height: heightBody
+        }}/>
     )
 
 }
 
 export default (world: any, color: string, pos: any, size: any): any => {
   
-    const initialFloor: any = Matter.Bodies.rectangle(
+    const initialRoof: any = Matter.Bodies.rectangle(
         pos.x,
         pos.y,
         size.width,
         size.height,
         {
-            label: 'Floor',
+            label: 'Roof',
             isStatic: true
         }
     )
-    Matter.World.add(world, initialFloor)
+    Matter.World.add(world, initialRoof)
 
     return {
-        body : initialFloor,
+        body : initialRoof,
         color,
         pos,
-        renderer: <Floor/>
+        renderer: <Roof/>
     }
 }

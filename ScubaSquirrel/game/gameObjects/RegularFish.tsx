@@ -2,7 +2,7 @@ import React from 'react'
 import Matter from 'matter-js'
 import { View, Image } from 'react-native'
 
-const PuffaFish = (props : any) => {
+const RegularFish = (props : any) => {
   const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
   const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
   const xBody = props.body.position.x - widthBody/2;
@@ -11,9 +11,13 @@ const PuffaFish = (props : any) => {
   const imageNumber = props.imageNumber;
 
 
-  const Image1 = require('../../assets/fish/jellyfish.png')
-  const Image2 = require('../../assets/fish/puffafish.png')
-  const images = [Image1, Image2]
+  const Image1 = require('../../assets/fish/bluefish.png')
+  const Image2 = require('../../assets/fish/blueyellowfish.png')
+  const Image3 = require('../../assets/fish/pinkfish.png')
+  const Image4 = require('../../assets/fish/yellowfish.png')
+  const images = [Image1, Image2, Image3, Image4]
+
+
 
   return (
     <View>
@@ -23,7 +27,6 @@ const PuffaFish = (props : any) => {
           position: 'absolute',
           left: xBody,
           top: yBody,
-          borderRadius: widthBody/2,
           width: widthBody,
           height: heightBody,
         }}
@@ -33,24 +36,24 @@ const PuffaFish = (props : any) => {
 }
 
 export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
-  
-  const initialPuffaFish: any = Matter.Bodies.circle(
+
+
+  const initialRegularFish: any = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
-    size.radius,
+    size.width,
+    size.height,
     {
-      label: 'PuffaFish',
+      label: 'RegularFish',
       restitution: 1,
     },
   )
-  
-  Matter.World.add(world, initialPuffaFish)
-
+  Matter.World.add(world, initialRegularFish)
   return {
-    body : initialPuffaFish,
+    body : initialRegularFish,
     color,
     pos,
     imageNumber,
-    renderer: <PuffaFish/>
+    renderer: <RegularFish/>
   }
 }

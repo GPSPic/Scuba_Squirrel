@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -15,6 +15,10 @@ import Win from './components/staticPages/Win';
 export default function App() {
 
 const Stack = createNativeStackNavigator();
+const screenWidth: number = Dimensions.get("screen").width;
+const screenHeight: number = Dimensions.get("screen").height;
+
+console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
 
   return (
     <NavigationContainer>

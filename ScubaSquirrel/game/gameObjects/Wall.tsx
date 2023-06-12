@@ -1,7 +1,8 @@
 import React from 'react'
 import Matter from 'matter-js'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+const imageURL = require('../../assets/rocks:walls/wall4Left.png');
 
 const Wall = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
@@ -13,15 +14,27 @@ const Wall = (props : any) => {
     const color = props.color
 
     return (
-        <View style = {{
-            backgroundColor: color,
-            borderStyle: 'solid',
-            position: 'absolute',
-            left: xBody,
-            top: yBody,
-            width: widthBody,
-            height: heightBody
-        }}/>
+        // <View style = {{
+        //     backgroundColor: color,
+        //     borderStyle: 'solid',
+        //     position: 'absolute',
+        //     left: xBody,
+        //     top: yBody,
+        //     width: widthBody,
+        //     height: heightBody
+        // }}/>
+        <View>
+        <Image
+      source={imageURL} // Replace with the correct path to the GIF image
+      style={{
+        position: 'absolute',
+        left: xBody,
+        top: yBody,
+        width: widthBody,
+        height: heightBody,
+      }}
+    />
+ </View> 
     )
 
 }

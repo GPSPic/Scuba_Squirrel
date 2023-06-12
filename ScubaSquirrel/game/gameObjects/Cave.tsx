@@ -3,8 +3,8 @@ import Matter from 'matter-js'
 import { View, Image } from 'react-native'
 
 
-const Squirrel = (props : any) => {
-  const imageURL = require('../../assets/Squirrel_transparent.gif');
+const Cave = (props : any) => {
+  const imageURL = require('../../assets/caveEntry.png');
   const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
   const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
   
@@ -23,6 +23,7 @@ const Squirrel = (props : any) => {
           top: yBody,
           width: widthBody,
           height: heightBody,
+          backgroundColor: color,
         }}
       />
     </View>    
@@ -31,33 +32,24 @@ const Squirrel = (props : any) => {
 
 export default (world: any, color: string, pos: any, size: any): any => {
   
-  const initialSquirrel: any = Matter.Bodies.rectangle(
+  const initialCave: any = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
     size.width,
     size.height,
     {
-      label: 'Squirrel',
-      isSensor: false,
-      isStatic: false,
+      label: 'Cave',
+      isSensor: true,
+      isStatic: true,
       restitution: 1
     }
   )
-  Matter.World.add(world, initialSquirrel)
+  Matter.World.add(world, initialCave)
 
   return {
-    body : initialSquirrel,
+    body : initialCave,
     color,
     pos,
-    renderer: <Squirrel/>
+    renderer: <Cave/>
   }
 }
-
-
-
-
-
-
-
-
-
