@@ -11,7 +11,5 @@ export default function NavBar() {
 
 const styles = StyleSheet.create({
     navBar: {
-        flex: 1,
-        backgroundColor: 'aqua',
     },
 })

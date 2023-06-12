@@ -4,7 +4,7 @@ import React from 'react'
 export default function StatDisplay() {
   return (
     <View style={styles.statDisplay}>
-      <Text style={styles.statText}>Deepest Reached: ***M</Text>
+      <Text style={styles.statText}>Current Stat: ***</Text>
     </View>
   )
 }

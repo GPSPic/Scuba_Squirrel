@@ -32,7 +32,7 @@ const PuffaFish = (props : any) => {
   )
 }
 
-export default (world: any, color: string, pos: any, size: any, imageNumber): any => {
+export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
   
   const initialPuffaFish: any = Matter.Bodies.circle(
     pos.x,
@@ -43,6 +43,7 @@ export default (world: any, color: string, pos: any, size: any, imageNumber): an
       restitution: 1,
     },
   )
+  
   Matter.World.add(world, initialPuffaFish)
 
   return {
