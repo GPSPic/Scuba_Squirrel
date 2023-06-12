@@ -3,21 +3,24 @@ import React from 'react'
 import StartButton from '../buttons/StartButton'
 import StatDisplay from '../gauges/StatDisplay'
 import Header from '../header/Header'
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 
 export default function Home({ navigation }: any) {
   return (
-      <View style={styles.container}>
-      <View style={styles.statDisplayContainer}>
-        <StatDisplay/>
-      </View>
-      <View style={styles.imageContainer}>
-          <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.image} />
-      </View>
-      <View style={styles.startButtonDisplay}>
-        <StartButton navigation={navigation}/>
-      </View>
-      </View>
+    <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
+        <Header/>
+        <View style={styles.statDisplayContainer}>
+          <StatDisplay/>
+        </View>
+        <View style={styles.imageContainer}>
+            <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.image} />
+        </View>
+        <View style={styles.startButtonDisplay}>
+          <StartButton navigation={navigation}/>
+        </View>
+    </LinearGradient>
   )
 }
 
@@ -25,7 +28,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   startButtonDisplay: {
@@ -40,6 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   imageContainer: {
+    alignItems: 'center',
   },
   image: {
     width: 200,
