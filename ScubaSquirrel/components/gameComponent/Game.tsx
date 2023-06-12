@@ -18,7 +18,7 @@ export default function Game() {
 
   return (
     <>
-      <View style={{flex:1}}>
+       <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
         <View style={styles.header}>
             <Header acornCount = {acornCount}/>
         </View>
@@ -50,7 +50,7 @@ export default function Game() {
         <View style={styles.header}>
           <Header acornCount={acornCount}/>
         </View>
-      </View>
+      </LinearGradient>
     </>
   );
 }
@@ -64,7 +64,10 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     background:{
-      flex: 10,
+      flex: 6,
       backgroundColor: 'rgba(0, 0, 0, 0)',
-    }
+    },
+    container:{
+      flex:1,
+    },
   })

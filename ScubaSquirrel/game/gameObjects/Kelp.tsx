@@ -42,7 +42,8 @@ export default (world: any, color: string, pos: any, size: any): any => {
     size.height,
     {
       label: 'Kelp',
-      isStatic: true
+      isStatic: true,
+      isSensor: false,
     }
   )
 

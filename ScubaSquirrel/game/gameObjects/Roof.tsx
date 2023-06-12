@@ -2,7 +2,7 @@ import React from 'react'
 import Matter from 'matter-js'
 import { View } from 'react-native'
 
-const Floor = (props : any) => {
+const Roof = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
     const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
 
@@ -27,22 +27,22 @@ const Floor = (props : any) => {
 
 export default (world: any, color: string, pos: any, size: any): any => {
   
-    const initialFloor: any = Matter.Bodies.rectangle(
+    const initialRoof: any = Matter.Bodies.rectangle(
         pos.x,
         pos.y,
         size.width,
         size.height,
         {
-            label: 'Floor',
+            label: 'Roof',
             isStatic: true
         }
     )
-    Matter.World.add(world, initialFloor)
+    Matter.World.add(world, initialRoof)
 
     return {
-        body : initialFloor,
+        body : initialRoof,
         color,
         pos,
-        renderer: <Floor/>
+        renderer: <Roof/>
     }
 }

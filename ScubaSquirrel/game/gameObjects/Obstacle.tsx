@@ -1,7 +1,7 @@
 import React from 'react'
 import Matter from 'matter-js'
 import { View, Image } from 'react-native'
-const imageURL = require('../../assets/rocks:walls/wall1.png');
+const imageURL = require('../../assets/rocks:walls/RockObstacle.png');
 
 const Obstacle = (props : any) => {
     const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x

@@ -35,12 +35,12 @@ export default (restart: any) => {
   }
 
   const randomKelp = () => {
-    const numberOfRandomKelp = generic.getRandomValue(1,3)
+    const numberOfRandomKelp = generic.getRandomValue(3,6)
     const kelpEntities = [];
     for(let i = 1; i <= numberOfRandomKelp; i++){
       kelpEntities.push(Kelp(world, 'pink', 
           {x: generic.getRandomValue(0,400) , y: generic.getRandomValue(0,350)},
-          {height:generic.getRandomValue(30,50), width: generic.getRandomValue(10,30)}
+          {height:80, width: 40}
       ))
     }
     return kelpEntities
@@ -72,14 +72,14 @@ export default (restart: any) => {
     Roof: Roof(world,'green',{x:screenWidth/2, y:1},{height:2,width: screenWidth}),
     WallRight1: Wall(world, 'brown', { x: screenWidth, y: screenHeight / 2 }, { height: screenHeight, width: 20 }),
     FloorBottom: Floor(world, 'yellow', { x: screenWidth / 2, y: screenHeight + 10 }, { height: 30, width: screenWidth - 20 }),
-    DK1: Obstacle(world, 'brown', { x: screenWidth / 8, y: screenHeight *0.25 }, { height: 10, width: screenWidth }),
-    DK2: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight *0.5 }, { height: 30, width: screenWidth }),
-    DK3: Obstacle(world, 'brown', { x: screenWidth / 4, y: screenHeight * .75 }, { height: 20, width: screenWidth }),
-    DK4: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight * .6 }, { height: 10, width: screenWidth }),
-    Obstacle5: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight * .85 }, { height: 15, width: screenWidth }),
+    DK1: Obstacle(world, 'brown', { x: screenWidth / 8, y: screenHeight *0.25 }, { height: 40, width: screenWidth }),
+    DK2: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight *0.5 }, { height: 40, width: screenWidth }),
+    DK3: Obstacle(world, 'brown', { x: screenWidth / 4, y: screenHeight * .75 }, { height: 40, width: screenWidth }),
+    DK4: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight * .6 }, { height: 40, width: screenWidth }),
+    // Obstacle5: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight * .85 }, { height: 15, width: screenWidth }),
     
     // Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight / 8 }, { radius: 10 }),
-    Acorn2: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight * 0.7 }, { radius: 10 })
+    Acorn2: Acorn(world, 'green', { x: screenWidth / 8, y: screenHeight * 0.7 }, { radius: 20 })
 
   }
 }  
