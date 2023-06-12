@@ -70,10 +70,11 @@ export default (restart: any) => {
 
   return {
     physics: { engine, world },
-    FloorBottom: Floor(world, 'yellow', { x: screenWidth / 2, y: screenHeight*7/8}, { height: 80, width: screenWidth - 20 }),
-    WallLeft1: Wall(world, 'brown', { x: 0, y: screenHeight/2-(screenHeight/8) }, { height: screenHeight*6/8, width: 20 }),
     Roof: Roof(world,'green',{x:screenWidth/2, y:1},{height:2,width: screenWidth}),
+    Floor: Roof(world,'green',{x:screenWidth/2, y:gameBottom-3},{height:1,width: screenWidth}),
+    WallLeft1: Wall(world, 'brown', { x: 0, y: screenHeight/2 }, { height: screenHeight, width: 20 }),
     WallRight1: Wall(world, 'brown', { x: screenWidth, y: screenHeight/2 }, { height: screenHeight, width: 20 }),
+    // FloorBottom: Floor(world, 'yellow', { x: screenWidth / 2, y: screenHeight*7/8}, { height: 80, width: screenWidth }),
     DK1: Obstacle(world, 'brown', { x: screenWidth / 8, y: screenHeight *0.25 }, { height: 40, width: screenWidth }),
     // DK2: Obstacle(world, 'brown', { x: screenWidth, y: screenHeight *0.5 }, { height: 40, width: screenWidth }),
     // DK3: Obstacle(world, 'brown', { x: screenWidth / 4, y: screenHeight * .75 }, { height: 40, width: screenWidth }),

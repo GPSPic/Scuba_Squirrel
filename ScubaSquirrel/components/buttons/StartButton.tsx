@@ -4,8 +4,9 @@ import React from 'react'
 export default function StartButton({ navigation, gameReload }: any) {
 
   const gameRoute = () => {
-    navigation.navigate("Game");
     gameReload();
+    console.log(`called Game Reload`);
+    navigation.navigate("Game");
   }
 
   return (

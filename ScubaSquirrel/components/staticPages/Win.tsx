@@ -4,10 +4,11 @@ import Header from '../header/Header'
 import { LinearGradient } from 'expo-linear-gradient';
 import StartButton from '../buttons/StartButton';
 
-export default function Win({navigation, gameReload}: any) {
+export default function Win({navigation, route}: any) {
+  const gameReload = route.params.reloadGame;
   return (
     <LinearGradient style={styles.container} colors={['#79f8ff', '#0040a1']} start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}>
-      <Header />
+      <Header/>
       <View style={styles.content}>
         <View style={styles.imageContainer}>
         <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.image}/>    
@@ -25,7 +26,7 @@ export default function Win({navigation, gameReload}: any) {
         </View>    
       </View>
       <View style={styles.content}>
-      <StartButton navigation={navigation} gameReload={gameReload}/>
+        <StartButton navigation={navigation} gameReload={gameReload}/>
       </View>
     </LinearGradient>
   );
