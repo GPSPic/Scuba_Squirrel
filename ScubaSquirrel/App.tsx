@@ -20,11 +20,14 @@ const [running, setRunning] = useState(false)
 
 const gameReload = () => {
   setRunning(true);
+  console.log(`hello!! - reloading game`);
 }
 
 const gameStop =() => {
+  console.log(`hello!! - stopping game`);
   setRunning(false);
 }
+
 
 const Stack = createNativeStackNavigator();
 const screenWidth: number = Dimensions.get("screen").width;
@@ -38,12 +41,12 @@ console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
       <Stack.Navigator initialRouteName='Home'
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="LandingScreen" component={LandingScreen}/>
-        <Stack.Screen name="Home" component={Home} initialParams={{gameReload}}/>
+        <Stack.Screen name="Home" component={Home} initialParams={{reloadGame: gameReload}}/>
         <Stack.Screen name="About" component={About}/>
         <Stack.Screen name="Tutorial" component={Tutorial}/>
-        <Stack.Screen name="Game" component={Game} initialParams={{running, gameStop}}/>
-        <Stack.Screen name="Death" component={Death} initialParams={{gameReload}}/>
-        <Stack.Screen name="Win" component={Win} initialParams={{gameReload}}/>
+        <Stack.Screen name="Game" component={Game} initialParams={{running, stopGame: gameStop}}/>
+        <Stack.Screen name="Death" component={Death} initialParams={{reloadGame: gameReload}}/>
+        <Stack.Screen name="Win" component={Win} initialParams={{reloadGame: gameReload}}/>
       </Stack.Navigator> 
       </LinearGradient>
     </NavigationContainer>

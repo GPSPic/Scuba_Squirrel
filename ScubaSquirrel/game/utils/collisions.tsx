@@ -61,6 +61,26 @@ const handleCollision = (engine: any, dispatch: any) => {
                     }
 
                 if (
+                    (bodyA.label === "Cave" && bodyB.label === "Squirrel") ||
+                    (bodyA.label === "Squirrel" && bodyB.label === "Cave")
+                    ) {
+                        if (collidedPairs.has(pairId)) {
+                                    continue; 
+                                  }
+                        if (bodyA.label === "Cave") {
+                            cave = bodyA;
+                            squirrel = bodyB;
+                        } else {
+                            squirrel = bodyA;
+                            cave = bodyB;
+                        }
+                        // Matter.Composite.remove(engine.world, cave)
+                        // Matter.Body.setPosition(cave, {x:500 , y:500})
+                        collidedPairs.add(pairId);
+                        dispatch({ type: 'win_con' });
+                    }
+
+                if (
                     (bodyA.label === "Squirrel" && bodyB.label === "Wall") ||
                     (bodyA.label === "Wall" && bodyB.label === "Squirrel")
                     ) {
@@ -73,7 +93,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                             wall = bodyB;
                         }
 
-                        dispatch({ type: 'game_over' });
+                        // dispatch({ type: 'game_over' });
                     }
 
                 if (
@@ -89,7 +109,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                             obstacle = bodyB;
                         }
 
-                        dispatch({ type: 'game_over' });
+                        // dispatch({ type: 'game_over' });
                     }
                 if (
                     (bodyA.label === "Squirrel" && bodyB.label === "Cave") ||

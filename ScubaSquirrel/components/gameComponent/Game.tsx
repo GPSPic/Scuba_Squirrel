@@ -6,10 +6,18 @@ import { useState, useEffect } from 'react';
 import Physics from '../../game/utils/physics';
 import Header from '../header/Header';
 import { LinearGradient } from 'expo-linear-gradient';
+import generic from '../../game/utils/generic';
 
-export default function Game({navigation, running, gameStop}: any) {
+export default function Game({navigation, running, route}: any) {
   const [gameEngine, setGameEngine] = useState(null)
   const [acornCount, setAcornCount]=useState(0)
+  const gameStop = route.params.stopGame;
+  const lightColours = ['#f41313','#1ec65e', '#ab65ed']
+  // const lightColours = ['#13def4','#1eb5c6', '#65e0ed']
+  const darkColours = ['#003d4c', '#000001', '#adadd4']
+  // const darkColours = ['#08004c', '#2412c9', '#111112']
+  const lightColour = generic.getRandomValue(0,2)
+  const darkColour = generic.getRandomValue(0,2)
 
 
   return (
@@ -18,7 +26,7 @@ export default function Game({navigation, running, gameStop}: any) {
         <View style={styles.header}>
             <Header acornCount = {acornCount}/>
         </View>
-        <LinearGradient style = {styles.background} colors={['#13def4', '#08004c']}start={{x:1, y:0}}end={{x:1, y:1}}>
+        <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}>
           <View style={styles.content}>
             <GameEngine
               ref={(ref) => { setGameEngine(ref) }}
@@ -28,22 +36,22 @@ export default function Game({navigation, running, gameStop}: any) {
               onEvent = {(e:any) => {
                 switch(e.type){
                   case 'game_over' : 
-                  gameStop();
-                  setAcornCount(0);
+                    gameStop();
+                    setAcornCount(0);
                   // gameEngine.stop()
-                  break;
+                    break;
                   case 'collect_acorn': 
-                  setAcornCount((prevAcornCount) => prevAcornCount + 1)
+                    setAcornCount((prevAcornCount) => prevAcornCount + 1)
                   // gameEngine.swap(entities())
-                  break;
+                    break;
                   case 'win_con':
                     // setBankedAcornCount
                     setAcornCount(0);
-                    gameEngine.stop();
-                    gameStop();
                     navigation.navigate('Win');
+                    // gameEngine.stop();
+                    gameStop();
                     gameEngine.swap(entities());
-
+                    break;
                 }
               }}
               style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}>
@@ -67,7 +75,7 @@ const styles = StyleSheet.create({
     header:{
       flex: 1,
     },
-    background:{
+    gameBackground:{
       flex: 6,
       backgroundColor: 'rgba(0, 0, 0, 0)',
     },
