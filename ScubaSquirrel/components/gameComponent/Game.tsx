@@ -28,9 +28,9 @@ export default function Game() {
         onEvent = {(e:any) => {
           switch(e.type){
             case 'game_over' : 
-            setRunning(false);
+            // setRunning(false);
             setAcornCount(0);
-            gameEngine.stop()
+            // gameEngine.stop()
             break;
             case 'collect_acorn': 
             setAcornCount((prevAcornCount) => prevAcornCount + 1)

@@ -38,17 +38,20 @@ export default (restart: any) => {
         return obstaclesEntities
     }
 
-    const randPuffaFish = randomFish();
-    const randObstacle = randomObstacle();
-    // console.log(`Puffa: ${randPuffaFish}`)
-    // console.log(`Obstacle: ${randObstacle.length}`)
+   
+
+    // const randPuffaFish = randomFish();
+    // const randObstacle = randomObstacle();
+    const totalObstacle = [...randomFish(), ...randomObstacle()]
+    // console.log(`Puffa: ${randPuffaFish.length}`)
+    // console.log(`Obstalce: ${randObstacle.length}`)
+    console.log(`Total: ${totalObstacle.length}`)
   
     return {
       physics: { engine, world },
       Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: 50, width: 30 }),
-      ...randPuffaFish,
-      ...randObstacle,
-      PuffaFish1: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
+      ...totalObstacle,
+      // PuffaFish1: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
     //   PuffaFish2: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
     //   PuffaFish3: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
     //   PuffaFish4: PuffaFish(world, 'blue', { x: 200, y:200 }, { radius: 20 }),
