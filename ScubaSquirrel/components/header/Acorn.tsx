@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-export default function Acorn() {
+export default function Acorn({acornCount}) {
   return (
     <View style={styles.container}>
       <Image source={require('../../assets/acorn/acorn.png')} style={styles.image} />
-      <Text style={styles.text}>2</Text>
+      <Text style={styles.text}>{acornCount}</Text>
     </View>
   );
 }

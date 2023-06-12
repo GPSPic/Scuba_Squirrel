@@ -14,7 +14,7 @@ const Acorn = (props : any) => {
             borderWidth:1,
             borderColor:color,
             borderStyle: 'solid',
-            position: 'absolute',
+            position: 'relative',
             left: xBody,
             top: yBody,
             borderRadius: widthBody/2,
@@ -32,8 +32,6 @@ export default (world: any, color: string, pos: any, size: any): any => {
         size.radius,
         {
             label: 'Acorn',
-            restitution: 1,
-            isStatic: true,
         },
     )
     Matter.World.add(world, initialAcorn)

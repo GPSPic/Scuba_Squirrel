@@ -8,8 +8,8 @@ const moveSquirrel = (entities: any, screenTouch: any)=>{
         const squirrelX = entities.Squirrel.body.position.x
         const squirrelY = entities.Squirrel.body.position.y
 
-        const xVelo = ((touchX - squirrelX) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*1
-        const yVelo = ((touchY - squirrelY) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*1
+        const xVelo = ((touchX - squirrelX) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*2
+        const yVelo = ((touchY - squirrelY) / (Math.abs(touchX - squirrelX) + Math.abs(touchY - squirrelY)))*2
     
     
         Matter.Body.setVelocity(entities.Squirrel.body,{
