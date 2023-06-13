@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 export default function BankedAcorn({bankedAcorn}: any) {
+  
   return (
     <View style={styles.container}>
       <Image source={require('../../assets/acorn/acorn.png')} style={styles.image} />

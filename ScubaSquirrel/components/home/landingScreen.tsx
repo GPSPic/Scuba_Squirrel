@@ -2,7 +2,12 @@ import { StyleSheet, View, Image} from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function LandingScreen() {
+export default function LandingScreen({navigation}) {
+
+  setTimeout(function() {
+    navigation.navigate('Home')
+  }, 3000);
+
   return ( 
     <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
         <View>

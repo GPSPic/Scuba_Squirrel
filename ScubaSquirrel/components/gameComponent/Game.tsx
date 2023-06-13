@@ -8,11 +8,13 @@ import Header from '../header/Header';
 import { LinearGradient } from 'expo-linear-gradient';
 import generic from '../../game/utils/generic';
 
-export default function Game({navigation, running, route, bankedAcorn}: any) {
+export default function Game({navigation, running, route}: any) {
   const [gameEngine, setGameEngine] = useState(null)
   const [acornCount, setAcornCount]=useState(0)
   const gameStop = route.params.stopGame;
   const addBankedAcorn = route.params.increaseBankedAcorn;
+  const bankedAcorn = route.params.bankedAcorn;
+
   const lightColours = ['#f41313','#1ec65e', '#ab65ed']
   // const lightColours = ['#13def4','#1eb5c6', '#65e0ed']
   const darkColours = ['#003d4c', '#000001', '#adadd4']
