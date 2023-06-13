@@ -11,7 +11,7 @@ import Death from './components/staticPages/Death';
 import LandingScreen from './components/home/landingScreen';
 import Tutorial from './components/staticPages/Tutorial';
 import Win from './components/staticPages/Win';
-
+import Menu from './components/staticPages/menu';
 
 
 export default function App() {
@@ -38,7 +38,7 @@ console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
   return (
     <NavigationContainer>
       <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
-      <Stack.Navigator initialRouteName='Home'
+      <Stack.Navigator initialRouteName='MenuPage'
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="LandingScreen" component={LandingScreen}/>
         <Stack.Screen name="Home" component={Home} initialParams={{reloadGame: gameReload}}/>
@@ -47,6 +47,7 @@ console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
         <Stack.Screen name="Game" component={Game} initialParams={{running, stopGame: gameStop}}/>
         <Stack.Screen name="Death" component={Death} initialParams={{reloadGame: gameReload}}/>
         <Stack.Screen name="Win" component={Win} initialParams={{reloadGame: gameReload}}/>
+        <Stack.Screen name="MenuPage" component={Menu}/>
       </Stack.Navigator> 
       </LinearGradient>
     </NavigationContainer>
