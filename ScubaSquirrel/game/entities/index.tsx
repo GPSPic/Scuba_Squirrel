@@ -16,7 +16,7 @@ import JellyFish from '../gameObjects/JellyFish';
 import Crab from '../gameObjects/Crab';
 
 
-export default (restart: any) => {
+export default (level:number, restart: any) => {
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
   engine.gravity.y = 0.0;
@@ -35,7 +35,7 @@ export default (restart: any) => {
   // console.log(`GT, GB, GH, GMY: ${gameTop}, ${gameBottom}, ${gameHeight}, ${gameMiddleY}`)
 
   const randomPuffaFish = () => {
-    const numberOfPuffaFish = generic.getRandomValue(1, 2);
+    const numberOfPuffaFish = generic.getRandomValue(1, level);
     const puffaFishEntities = [];
     for (let i = 1; i <= numberOfPuffaFish; i++) {
       puffaFishEntities.push(PuffaFish(world, 'blue', 
@@ -59,7 +59,7 @@ export default (restart: any) => {
   // }
 
   const randomKelp = () => {
-    const numberOfRandomKelp = generic.getRandomValue(3,6)
+    const numberOfRandomKelp = generic.getRandomValue(3,(level + 2))
     const kelpEntities = [];
     for(let i = 1; i <= numberOfRandomKelp; i++){
       kelpEntities.push(Kelp(world, 'pink', 
@@ -71,7 +71,7 @@ export default (restart: any) => {
     return kelpEntities
   }
   const randomRegularFish = () => {
-    const numberOfRandomNiceFish = generic.getRandomValue(5,5)
+    const numberOfRandomNiceFish = generic.getRandomValue(1,(level + 1))
     const niceFishEntities = [];
     for(let i = 1; i <= numberOfRandomNiceFish; i++){
       niceFishEntities.push(RegularFish(world, 'pink', 

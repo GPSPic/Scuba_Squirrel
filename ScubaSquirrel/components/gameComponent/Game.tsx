@@ -11,6 +11,7 @@ import generic from '../../game/utils/generic';
 export default function Game({navigation, running, route}: any) {
   const [gameEngine, setGameEngine] = useState(null)
   const [acornCount, setAcornCount] = useState(0)
+  const [levelStreak, setLevelStreak] = useState(0)
   const gameStop = route.params.stopGame;
   const addBankedAcorn = route.params.increaseBankedAcorn;
   const bankedAcorn = route.params.bankedAcorn;
@@ -38,13 +39,14 @@ export default function Game({navigation, running, route}: any) {
             <GameEngine
               ref={(ref) => { setGameEngine(ref) }}
               systems={[Physics]}
-              entities={entities()}
+              entities={entities(levelStreak)}
               running = {running}
               onEvent = {(e:any) => {
                 switch(e.type){
                   case 'game_over' : 
                     gameStop();
                     setAcornCount(0);
+                    setLevelStreak(0);
                   // gameEngine.stop()
                     break;
                   case 'collect_acorn': 
@@ -57,11 +59,12 @@ export default function Game({navigation, running, route}: any) {
                     console.log(`Game dispatch win_con count: ${acornCount}`);
                     addBankedAcorn(acornCount);
                     gameStop();
+                    setLevelStreak((prevLevelStreak) => prevLevelStreak + 1)
                     navigation.navigate('Win');
                     // gameEngine.stop();
                     setTimeout(function() {
                       setAcornCount(0);
-                      gameEngine.swap(entities());
+                      gameEngine.swap(entities(levelStreak));
                     }, 3000); 
                     break;
                 }
