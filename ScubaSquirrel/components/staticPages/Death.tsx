@@ -8,7 +8,7 @@ export default function Death({navigation, route}: any) {
   const gameReload = route.params.reloadGame;
   return (
     <LinearGradient style={styles.container} colors={['#79f8ff', '#0040a1']} start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}>
-      <Header/>
+      <Header navigation={navigation}/>
       <View style={styles.content}>
         <View style={styles.imageContainer}>
         <Image source={require('../../assets/Squirrel_transparentDeath.png')} style={styles.image}/>    
