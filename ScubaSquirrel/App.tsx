@@ -16,16 +16,20 @@ import Menu from './components/staticPages/menu';
 
 export default function App() {
 
-const [running, setRunning] = useState(false)
+const [running, setRunning] = useState(false);
+const [bankedAcorn, setBankedAcorn] = useState(0);
 
 const gameReload = () => {
   setRunning(true);
-  console.log(`hello!! - reloading game`);
 }
 
 const gameStop =() => {
-  console.log(`hello!! - stopping game`);
   setRunning(false);
+}
+
+const addBankedAcorn = (acornCount: number) => {
+  const newCount = bankedAcorn + acornCount;
+  setBankedAcorn(newCount);
 }
 
 
@@ -41,12 +45,12 @@ console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
       <Stack.Navigator initialRouteName='LandingScreen'
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="LandingScreen" component={LandingScreen}/>
-        <Stack.Screen name="Home" component={Home} initialParams={{reloadGame: gameReload}}/>
-        <Stack.Screen name="About" component={About}/>
-        <Stack.Screen name="Tutorial" component={Tutorial}/>
-        <Stack.Screen name="Game" component={Game} initialParams={{running, stopGame: gameStop}}/>
-        <Stack.Screen name="Death" component={Death} initialParams={{reloadGame: gameReload}}/>
-        <Stack.Screen name="Win" component={Win} initialParams={{reloadGame: gameReload}}/>
+        <Stack.Screen name="Home" component={Home} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
+        <Stack.Screen name="About" component={About} initialParams={{bankedAcorn}}/>
+        <Stack.Screen name="Tutorial" component={Tutorial} initialParams={{bankedAcorn}}/>
+        <Stack.Screen name="Game" component={Game} initialParams={{running, bankedAcorn, stopGame: gameStop, increaseBankedAcorn: addBankedAcorn}}/>
+        <Stack.Screen name="Death" component={Death} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
+        <Stack.Screen name="Win" component={Win} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
         <Stack.Screen name="MenuPage" component={Menu}/>
       </Stack.Navigator> 
       </LinearGradient>

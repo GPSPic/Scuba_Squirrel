@@ -37,6 +37,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     size.radius,
     {
       label: 'Acorn',
+      isSensor: true
     },
   )
   Matter.World.add(world, initialAcorn)
