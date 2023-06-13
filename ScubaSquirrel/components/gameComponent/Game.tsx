@@ -10,7 +10,7 @@ import generic from '../../game/utils/generic';
 
 export default function Game({navigation, running, route}: any) {
   const [gameEngine, setGameEngine] = useState(null)
-  const [acornCount, setAcornCount]=useState(0)
+  const [acornCount, setAcornCount] = useState(0)
   const gameStop = route.params.stopGame;
   const addBankedAcorn = route.params.increaseBankedAcorn;
   const bankedAcorn = route.params.bankedAcorn;
@@ -22,13 +22,20 @@ export default function Game({navigation, running, route}: any) {
   const lightColour = generic.getRandomValue(0,2)
   const darkColour = generic.getRandomValue(0,2)
 
+  const increaseStreakCount = (val: number) => {
+    const newAcornCount = acornCount + val;
+    console.log(`is it me you're looking for ${newAcornCount}, acornCount ${acornCount}`);
+    
+    setAcornCount(newAcornCount)
+    console.log(`is it me you're looking for 2 ${newAcornCount}, acornCount ${acornCount}`);
+  }
 
 
   return (
     <>
        <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
         <View style={styles.header}>
-            <Header bankedAcorn = {bankedAcorn}/>
+            <Header bankedAcorn = {acornCount} navigation={navigation}/>
         </View>
         <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}>
           <View style={styles.content}>
@@ -45,16 +52,19 @@ export default function Game({navigation, running, route}: any) {
                   // gameEngine.stop()
                     break;
                   case 'collect_acorn': 
-                    setAcornCount((prevAcornCount) => prevAcornCount + 1)
+                  const newCount:number = acornCount + 1;
+                  increaseStreakCount(newCount)
+                  console.log(`Game dispatch collect_acorn count: ${acornCount}, ${newCount}`);
                   // gameEngine.swap(entities())
                     break;
                   case 'win_con':
+                    console.log(`Game dispatch win_con count: ${acornCount}`);
                     addBankedAcorn(acornCount);
-                    setAcornCount(0);
                     gameStop();
                     navigation.navigate('Win');
                     // gameEngine.stop();
                     setTimeout(function() {
+                      setAcornCount(0);
                       gameEngine.swap(entities());
                     }, 3000); 
                     break;

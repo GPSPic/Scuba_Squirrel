@@ -1,21 +1,27 @@
-import { StyleSheet, View, Image} from 'react-native'
+import { StyleSheet, View, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function LandingScreen({navigation}) {
+export default function LandingScreen({navigation}: any) {
 
   setTimeout(function() {
     navigation.navigate('Home')
   }, 3000);
 
+  const navigateHome = () => {
+    navigation.navigate('Home');
+  }
+
   return ( 
     <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
+      <TouchableOpacity onPress={navigateHome}>  
         <View>
-            <Image source={require('../../assets/ScubaSquirrelLogo.png')} style={styles.logo} />
+            <Image source={require('../../assets/ScubaSquirrelLogo.png')} style={styles.logo}/>
         </View>
-      <View>
-          <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.squirrel} />
-      </View>
+        <View>
+            <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.squirrel} />
+        </View>
+        </TouchableOpacity>
     </LinearGradient>
   )
 }
