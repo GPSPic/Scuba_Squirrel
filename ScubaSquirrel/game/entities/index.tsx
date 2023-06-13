@@ -76,13 +76,25 @@ export default (level:number, restart: any) => {
     for(let i = 1; i <= numberOfRandomNiceFish; i++){
       niceFishEntities.push(RegularFish(world, 'pink', 
             {x:generic.getRandomValue(10,300), y:generic.getRandomValue(10,700)}, 
-            { width: 50, height: 30 }, generic.getRandomValue(0,3)
+            { width: 30, height: 12 }, generic.getRandomValue(1,level)
         ))
     }
     return niceFishEntities
   }
 
-  const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish()]
+  const randomAcorn = () => {
+    const numberOfRandomAcorn = generic.getRandomValue(1,(level + 1))
+    const AcornEntities = [];
+    for(let i = 1; i <= numberOfRandomAcorn; i++){
+      AcornEntities.push(Acorn(world, 'orange', 
+            {x:generic.getRandomValue(10,300), y:generic.getRandomValue(10,700)}, 
+            { radius: 20 }, generic.getRandomValue(0,level)
+        ))
+    }
+    return AcornEntities
+  }
+
+  const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish(),...randomAcorn()]
 
   return {
     physics: { engine, world },
@@ -105,7 +117,7 @@ export default (level:number, restart: any) => {
       { x: generic.getRandomValue((screenWidth/2)+75,screenWidth+75), y: screenHeight * .6 }, 
       { height: 40, width: screenWidth }),
 
-    Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: gameBottom - 20 }, { radius: 20 }),
+    // Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: gameBottom - 20 }, { radius: 20 }),
     Cave: Cave(world, 'pink', { x: screenWidth-60, y:(gameBottom-40)}, { height: 75, width: 90 }),
     CaveCentre: CaveCentre(world, 'white', { x: screenWidth-60, y:(gameBottom-40)}, {radius: 5}),
     Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: 75, width: squirrelWidth }),

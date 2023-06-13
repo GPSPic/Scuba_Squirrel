@@ -29,7 +29,7 @@ const Acorn = (props : any) => {
   )
 }
 
-export default (world: any, color: string, pos: any, size: any): any => {
+export default (world: any, color: string, pos: any, size: any, imageNumber:number): any => {
   
   const initialAcorn: any = Matter.Bodies.circle(
     pos.x,
@@ -46,6 +46,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     body : initialAcorn,
     color,
     pos,
+    imageNumber,
     renderer: <Acorn/>
   }
 }
