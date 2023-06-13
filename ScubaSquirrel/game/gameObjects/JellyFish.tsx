@@ -2,17 +2,17 @@ import React from 'react'
 import Matter from 'matter-js'
 import { View, Image } from 'react-native'
 
-
-const Squirrel = (props : any) => {
-  const imageURL = require('../../assets/Squirrel_transparent.gif');
+const JellyFish = (props : any) => {
   const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
   const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
-  
   const xBody = props.body.position.x - widthBody/2;
   const yBody = props.body.position.y - heightBody/2;
-
   const color = props.color
+  const imageNumber = props.imageNumber;
 
+
+  const imageURL = require('../../assets/fish/jellyfish.png')
+  
   return (
     <View>
       <Image
@@ -21,46 +21,34 @@ const Squirrel = (props : any) => {
           position: 'absolute',
           left: xBody,
           top: yBody,
-          borderRadius: 20,
+          borderRadius: widthBody/2,
           width: widthBody,
           height: heightBody,
           // backgroundColor: color,
         }}
       />
-    </View>    
+   </View>
   )
 }
 
 export default (world: any, color: string, pos: any, size: any): any => {
   
-  const initialSquirrel: any = Matter.Bodies.rectangle(
+  const initialJellyFish: any = Matter.Bodies.circle(
     pos.x,
     pos.y,
-    size.width,
-    size.height,
+    size.radius,
     {
-      label: 'Squirrel',
-      isSensor: false,
-      isStatic: false,
+      label: 'JellyFish',
       restitution: 1,
-      density:100,
-    }
+    },
   )
-  Matter.World.add(world, initialSquirrel)
+  
+  Matter.World.add(world, initialJellyFish)
 
   return {
-    body : initialSquirrel,
+    body : initialJellyFish,
     color,
     pos,
-    renderer: <Squirrel/>
+    renderer: <JellyFish/>
   }
 }
-
-
-
-
-
-
-
-
-
