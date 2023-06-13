@@ -60,24 +60,21 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   image:{
-    width:150,
+    width:170,
     height:40,
-    backgroundColor: 'transparent',
   },
   image2:{
     width:250,
     height:40,
-    backgroundColor: 'transparent',
   },
   image3:{
     width:200,
     height:40,
-    backgroundColor: 'transparent',
   },
   button: {
     borderWidth: 3,
     borderColor: '#feee00',
-    borderRadius: 20,
+    borderRadius: 25,
     backgroundColor: 'transparent',
     paddingVertical: 10,
     paddingHorizontal: 20,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View , Button} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View , Button, Image} from 'react-native'
 import React from 'react'
 
 export default function StartButton({ navigation, gameReload }: any) {
@@ -11,27 +11,27 @@ export default function StartButton({ navigation, gameReload }: any) {
 
   return (
     <TouchableOpacity style={styles.button} onPress={gameRoute}>
-      <Text style={styles.buttonText}>PLAY</Text>
+      <Image source={require('../../assets/PlayButton.png')} style={styles.image} />
     </TouchableOpacity>
   )
 };
 
 const styles = StyleSheet.create({
   button: {
-    borderWidth: 5,
+    borderWidth: 3,
     borderColor: '#feee00',
-    borderRadius: 20,
+    borderRadius: 25,
     backgroundColor: 'transparent',
     paddingVertical: 10,
     paddingHorizontal: 20,
     width: 300,
     height: 100,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  buttonText: {
-    color: '#feee00',
-    fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  image:{
+    width:150,
+    height:40,
+    backgroundColor: 'transparent',
   },
 });

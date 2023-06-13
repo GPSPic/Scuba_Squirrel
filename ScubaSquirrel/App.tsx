@@ -38,7 +38,7 @@ console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
   return (
     <NavigationContainer>
       <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
-      <Stack.Navigator initialRouteName='MenuPage'
+      <Stack.Navigator initialRouteName='LandingScreen'
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="LandingScreen" component={LandingScreen}/>
         <Stack.Screen name="Home" component={Home} initialParams={{reloadGame: gameReload}}/>
