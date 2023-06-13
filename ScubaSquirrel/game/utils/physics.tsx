@@ -3,12 +3,14 @@ import { useState } from "react";
 import PuffaFish from "../gameObjects/PuffaFish";
 import moveSquirrel from "./moveSquirrel";
 import handleCollision from "./collisions";
+import moveCrab from "./moveCrab";
 
 const Physics =(entities: any, {touches, time, dispatch} : any) => {
   let engine= entities.physics.engine
 
     moveSquirrel(entities, touches);   
-    handleCollision(engine, dispatch)    
+    handleCollision(engine, dispatch);
+    moveCrab(entities);    
                     
     Matter.Engine.update(engine, time.delta)
                     
