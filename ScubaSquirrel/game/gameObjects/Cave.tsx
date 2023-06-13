@@ -23,6 +23,7 @@ const Cave = (props : any) => {
           top: yBody,
           width: widthBody,
           height: heightBody,
+          // backgroundColor: color,
         }}
       />
     </View>    
@@ -37,7 +38,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     size.width,
     size.height,
     {
-      label: 'Cave',
+      label: 'CaveImage',
       isSensor: true,
       isStatic: true,
       restitution: 1

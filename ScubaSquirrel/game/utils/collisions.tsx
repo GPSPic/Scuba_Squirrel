@@ -30,7 +30,6 @@ const handleCollision = (engine: any, dispatch: any) => {
             let cave;
             
             if (currentTime - lastProcessedCollisionTime >= throttleInterval) {
-
                 
                 if (
                     (bodyA.label === "PuffaFish" && bodyB.label === "Squirrel") ||

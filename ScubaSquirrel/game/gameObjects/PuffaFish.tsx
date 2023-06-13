@@ -26,6 +26,7 @@ const PuffaFish = (props : any) => {
           borderRadius: widthBody/2,
           width: widthBody,
           height: heightBody,
+          // backgroundColor: color,
         }}
       />
    </View>
