@@ -44,6 +44,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
       isStatic: false,
       restitution: 1,
       density:100,
+      mass:150,
     }
   )
   Matter.World.add(world, initialSquirrel)

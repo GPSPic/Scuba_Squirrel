@@ -39,6 +39,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     {
       label: 'Crab',
       restitution: 1,
+      isSensor: true,
     },
   )
   

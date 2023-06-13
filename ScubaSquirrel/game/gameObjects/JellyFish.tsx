@@ -40,6 +40,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     {
       label: 'JellyFish',
       restitution: 1,
+      isSensor: true,
     },
   )
   
