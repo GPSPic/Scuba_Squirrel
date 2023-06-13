@@ -31,8 +31,8 @@ export default (restart: any) => {
   const gameMiddleY: number = gameHeight/2;
   const DK2StartPos = generic.getRandomValue(- (screenWidth/2)+15, (screenWidth/2)-75 );
 
-  console.log(`SH, SH*1/7, SH*6/7, SH/2: ${screenHeight}, ${screenHeight*1/7}, ${screenHeight*6/7}, ${screenHeight/2}`)
-  console.log(`GT, GB, GH, GMY: ${gameTop}, ${gameBottom}, ${gameHeight}, ${gameMiddleY}`)
+  // console.log(`SH, SH*1/7, SH*6/7, SH/2: ${screenHeight}, ${screenHeight*1/7}, ${screenHeight*6/7}, ${screenHeight/2}`)
+  // console.log(`GT, GB, GH, GMY: ${gameTop}, ${gameBottom}, ${gameHeight}, ${gameMiddleY}`)
 
   const randomPuffaFish = () => {
     const numberOfPuffaFish = generic.getRandomValue(1, 2);
@@ -83,7 +83,7 @@ export default (restart: any) => {
   }
 
   const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish(), ...randomJellyFish()]
-  console.log(`Total: ${totalObstacle.length}`)
+  // console.log(`Total: ${totalObstacle.length}`)
 
   return {
     physics: { engine, world },

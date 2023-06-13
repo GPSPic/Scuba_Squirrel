@@ -6,9 +6,11 @@ import StartButton from '../buttons/StartButton';
 
 export default function Win({navigation, route}: any) {
   const gameReload = route.params.reloadGame;
+  const bankedAcorn = route.params.bankedAcorn;
+
   return (
     <LinearGradient style={styles.container} colors={['#79f8ff', '#0040a1']} start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}>
-      <Header navigation={navigation}/>
+      <Header bankedAcorn={bankedAcorn} navigation={navigation}/>
       <View style={styles.content}>
         <View style={styles.imageContainer}>
         <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.image}/>    
