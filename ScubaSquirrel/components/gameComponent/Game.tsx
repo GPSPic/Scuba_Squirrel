@@ -15,21 +15,17 @@ export default function Game({navigation, running, route}: any) {
   const addBankedAcorn = route.params.increaseBankedAcorn;
   const bankedAcorn = route.params.bankedAcorn;
 
-  const lightColours = ['#f41313','#1ec65e', '#ab65ed']
+  const increaseStreakCount = (val: number) => {
+    const newAcornCount = acornCount + val;
+    setAcornCount(newAcornCount)
+  }
+
+  const lightColours = ['#00ffd0','#00ffea', '#00bfff']
   // const lightColours = ['#13def4','#1eb5c6', '#65e0ed']
-  const darkColours = ['#003d4c', '#000001', '#adadd4']
+  const darkColours = ['#00303b', '#000001', '#00361d']
   // const darkColours = ['#08004c', '#2412c9', '#111112']
   const lightColour = generic.getRandomValue(0,2)
   const darkColour = generic.getRandomValue(0,2)
-
-  const increaseStreakCount = (val: number) => {
-    const newAcornCount = acornCount + val;
-    console.log(`is it me you're looking for ${newAcornCount}, acornCount ${acornCount}`);
-    
-    setAcornCount(newAcornCount)
-    console.log(`is it me you're looking for 2 ${newAcornCount}, acornCount ${acornCount}`);
-  }
-
 
   return (
     <>

@@ -18,7 +18,7 @@ export default function Home({ navigation, route }: any) {
     <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
         <Header bankedAcorn={bankedAcorn} navigation={navigation}/>
         <View style={styles.statDisplayContainer}>
-          <StatDisplay/>
+          {/* <StatDisplay/> */}
         </View>
         <View style={styles.imageContainer}>
             <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.image} />
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 200,
-    height: 300,
+    width: 300,
+    height: 450,
     resizeMode: 'contain',
   },
 })
