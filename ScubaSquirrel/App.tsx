@@ -11,7 +11,7 @@ import Death from './components/staticPages/Death';
 import LandingScreen from './components/home/landingScreen';
 import Tutorial from './components/staticPages/Tutorial';
 import Win from './components/staticPages/Win';
-
+import Menu from './components/staticPages/menu';
 
 
 export default function App() {
@@ -51,6 +51,7 @@ console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
         <Stack.Screen name="Game" component={Game} initialParams={{running, bankedAcorn, stopGame: gameStop, increaseBankedAcorn: addBankedAcorn}}/>
         <Stack.Screen name="Death" component={Death} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
         <Stack.Screen name="Win" component={Win} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
+        <Stack.Screen name="MenuPage" component={Menu}/>
       </Stack.Navigator> 
       </LinearGradient>
     </NavigationContainer>

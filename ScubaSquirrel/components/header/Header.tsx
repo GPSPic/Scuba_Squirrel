@@ -4,13 +4,13 @@ import Acorn from './BankedAcorn'
 import Title from './Title'
 import MenuButton from '../buttons/MenuButton'
 
-export default function Header({bankedAcorn}: any) {
+export default function Header({bankedAcorn, navigation}: any) {
 
   return (
     <View style={styles.header}>
       <Acorn bankedAcorn = {bankedAcorn}></Acorn>
       <Title></Title>
-      <MenuButton></MenuButton>
+      <MenuButton navigation={navigation}></MenuButton>
     </View>
   )
 }

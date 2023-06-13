@@ -12,6 +12,8 @@ import Roof from '../gameObjects/Roof';
 import Cave from '../gameObjects/Cave';
 import CaveCentre from '../gameObjects/CaveCentre';
 import RegularFish from '../gameObjects/RegularFish';
+import JellyFish from '../gameObjects/JellyFish';
+import Crab from '../gameObjects/Crab';
 
 
 export default (restart: any) => {
@@ -19,6 +21,7 @@ export default (restart: any) => {
   const world = engine.world;
   engine.gravity.y = 0.0;
 
+  const squirrelWidth: number = 50;
   const screenWidth: number = Dimensions.get("window").width;
   const screenHeight: number = Dimensions.get("window").height;
   const flexParts = 7;
@@ -32,15 +35,27 @@ export default (restart: any) => {
   // console.log(`GT, GB, GH, GMY: ${gameTop}, ${gameBottom}, ${gameHeight}, ${gameMiddleY}`)
 
   const randomPuffaFish = () => {
-    const numberOfPuffaFish = generic.getRandomValue(0, 4);
+    const numberOfPuffaFish = generic.getRandomValue(1, 2);
     const puffaFishEntities = [];
     for (let i = 1; i <= numberOfPuffaFish; i++) {
       puffaFishEntities.push(PuffaFish(world, 'blue', 
       {x:generic.getRandomValue(10,300), y:generic.getRandomValue(10,700)}, 
-      {radius:generic.getRandomValue(10,20)},generic.getRandomValue(0,1),
+      {radius:generic.getRandomValue(10,20)},
       ));
     }
     return puffaFishEntities;
+  }
+
+  const randomJellyFish = () => {
+    const numberOfJellyFish = generic.getRandomValue(1, 2);
+    const JellyFishEntities = [];
+    for (let i = 1; i <= numberOfJellyFish; i++) {
+      JellyFishEntities.push(JellyFish(world, 'blue', 
+      {x:generic.getRandomValue(10,300), y:generic.getRandomValue(10,700)}, 
+      {radius:generic.getRandomValue(10,20)},
+      ));
+    }
+    return JellyFishEntities;
   }
 
   const randomKelp = () => {
@@ -56,29 +71,26 @@ export default (restart: any) => {
     return kelpEntities
   }
   const randomRegularFish = () => {
-    const numberOfRandomNiceFish = generic.getRandomValue(5,9)
+    const numberOfRandomNiceFish = generic.getRandomValue(5,5)
     const niceFishEntities = [];
     for(let i = 1; i <= numberOfRandomNiceFish; i++){
       niceFishEntities.push(RegularFish(world, 'pink', 
             {x:generic.getRandomValue(10,300), y:generic.getRandomValue(10,700)}, 
-            { height: generic.getRandomValue(20,30), width: generic.getRandomValue(40, 60) }, generic.getRandomValue(0,3)
+            { radius: 30 }, generic.getRandomValue(0,3)
         ))
     }
     return niceFishEntities
   }
 
-  // const randPuffaFish = randomFish();
-  // const randObstacle = randomObstacle();
-  const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish() ]
-  // console.log(`Puffa: ${randPuffaFish.length}`)
-  // console.log(`Obstalce: ${randObstacle.length}`)
+  const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish(), ...randomJellyFish()]
   // console.log(`Total: ${totalObstacle.length}`)
 
   return {
     physics: { engine, world },
     Roof: Roof(world,'green',{x:screenWidth/2, y:-1},{height:2,width: screenWidth}),
     Floor: Roof(world,'white',{x:screenWidth/2, y:gameBottom - 2},{height:4,width: screenWidth}),
-    WallLeft: Wall(world, 'brown', { x: -5, y: gameMiddleY }, { height: gameHeight, width: 30 },0),
+    // WallLeft: Wall(world, 'brown', { x: -5, y: screenHeight/2 }, { height: screenHeight, width: 40 },0),
+    WallLeft: Wall(world, 'brown', { x: -5, y: gameMiddleY }, { height: gameHeight, width: 40 },0),
     WallRight: Wall(world, 'brown', { x: screenWidth+5, y: gameMiddleY }, { height: gameHeight, width: 40 },1),
     FloorBottom: Floor(world, 'yellow', { x: screenWidth / 2, y: gameBottom}, { height: 80, width: screenWidth }),
     DK1: Obstacle(world, 'brown', 
@@ -88,15 +100,17 @@ export default (restart: any) => {
       { x: DK2StartPos, y: screenHeight *0.4 }, 
       { height: 40, width: screenWidth }),
     DK2R: Obstacle(world, 'brown', 
-      { x: screenWidth + DK2StartPos + generic.getRandomValue(50,125), y: screenHeight * 0.4 }, 
+      { x: screenWidth + DK2StartPos + generic.getRandomValue(1.5*squirrelWidth,2.5*squirrelWidth), y: screenHeight * 0.4 }, 
       { height: 40, width: screenWidth }),
     DK3: Obstacle(world, 'brown', 
       { x: generic.getRandomValue((screenWidth/2)+75,screenWidth+75), y: screenHeight * .6 }, 
       { height: 40, width: screenWidth }),
+
     Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: gameBottom - 20 }, { radius: 20 }),
     Cave: Cave(world, 'pink', { x: screenWidth-60, y:(gameBottom-40)}, { height: 75, width: 90 }),
     CaveCentre: CaveCentre(world, 'white', { x: screenWidth-60, y:(gameBottom-40)}, {radius: 5}),
-    Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: 75, width: 40 }),
+    Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: 75, width: squirrelWidth }),
     ...totalObstacle,
+    Crab: Crab(world, 'red', {x: screenWidth/3, y:gameBottom-30}, {radius: 30})
   }
 }  

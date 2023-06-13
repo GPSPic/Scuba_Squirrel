@@ -23,6 +23,7 @@ export default function Game({navigation, running, route}: any) {
   const darkColour = generic.getRandomValue(0,2)
 
 
+
   return (
     <>
        <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
@@ -50,21 +51,20 @@ export default function Game({navigation, running, route}: any) {
                   case 'win_con':
                     addBankedAcorn(acornCount);
                     setAcornCount(0);
+                    gameStop();
                     navigation.navigate('Win');
                     // gameEngine.stop();
-                    gameStop();
-                    gameEngine.swap(entities());
+                    setTimeout(function() {
+                      gameEngine.swap(entities());
+                    }, 3000); 
                     break;
                 }
               }}
-              style={{position: 'relative', top: 0, left: 0, bottom: 0, right: 0,}}>
+              style={{position: 'absolute', top: 0, left: 0, bottom: 0, right: 0,}}>
             </GameEngine>
             <StatusBar style="auto" hidden={true}/>
           </View> 
         </LinearGradient>
-        {/* <View style={styles.header}>
-          <Header acornCount={acornCount}/>
-        </View> */}
       </LinearGradient>
     </>
   );

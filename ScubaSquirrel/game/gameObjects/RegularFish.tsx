@@ -27,6 +27,7 @@ const RegularFish = (props : any) => {
           position: 'absolute',
           left: xBody,
           top: yBody,
+          borderRadius: widthBody/2,
           width: widthBody,
           height: heightBody,
         }}
@@ -38,11 +39,10 @@ const RegularFish = (props : any) => {
 export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
 
 
-  const initialRegularFish: any = Matter.Bodies.rectangle(
+  const initialRegularFish: any = Matter.Bodies.circle(
     pos.x,
     pos.y,
-    size.width,
-    size.height,
+    size.radius,
     {
       label: 'RegularFish',
       restitution: 1,

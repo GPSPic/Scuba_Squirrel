@@ -10,20 +10,17 @@ const PuffaFish = (props : any) => {
   const color = props.color
   const imageNumber = props.imageNumber;
 
-
-  const Image1 = require('../../assets/fish/jellyfish.png')
-  const Image2 = require('../../assets/fish/puffafish.png')
-  const images = [Image1, Image2]
+  const imageURL = require('../../assets/fish/puffafish.png')
 
   return (
     <View>
       <Image
-        source={images[imageNumber]} // Replace with the correct path to the GIF image
+        source={imageURL} // Replace with the correct path to the GIF image
         style={{
           position: 'absolute',
           left: xBody,
           top: yBody,
-          borderRadius: widthBody/2,
+          borderRadius: heightBody/2,
           width: widthBody,
           height: heightBody,
           // backgroundColor: color,
@@ -33,7 +30,7 @@ const PuffaFish = (props : any) => {
   )
 }
 
-export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
+export default (world: any, color: string, pos: any, size: any): any => {
   
   const initialPuffaFish: any = Matter.Bodies.circle(
     pos.x,
@@ -51,7 +48,6 @@ export default (world: any, color: string, pos: any, size: any, imageNumber: num
     body : initialPuffaFish,
     color,
     pos,
-    imageNumber,
     renderer: <PuffaFish/>
   }
 }

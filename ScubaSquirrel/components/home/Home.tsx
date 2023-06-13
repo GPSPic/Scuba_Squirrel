@@ -16,7 +16,7 @@ export default function Home({ navigation, route }: any) {
 
   return (
     <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
-        <Header bankedAcorn={bankedAcorn}/>
+        <Header bankedAcorn={bankedAcorn} navigation={navigation}/>
         <View style={styles.statDisplayContainer}>
           <StatDisplay/>
         </View>
