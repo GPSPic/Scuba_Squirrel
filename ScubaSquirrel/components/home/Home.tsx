@@ -7,11 +7,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
-export default function Home({ navigation, route }: any) {
+export default function Home({ navigation, route, bankedAcorn }: any) {
   const gameReload = route.params.reloadGame;
   return (
     <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
-        <Header/>
+        <Header bankedAcorn={bankedAcorn}/>
         <View style={styles.statDisplayContainer}>
           <StatDisplay/>
         </View>

@@ -8,10 +8,11 @@ import Header from '../header/Header';
 import { LinearGradient } from 'expo-linear-gradient';
 import generic from '../../game/utils/generic';
 
-export default function Game({navigation, running, route}: any) {
+export default function Game({navigation, running, route, bankedAcorn}: any) {
   const [gameEngine, setGameEngine] = useState(null)
   const [acornCount, setAcornCount]=useState(0)
   const gameStop = route.params.stopGame;
+  const addBankedAcorn = route.params.increaseBankedAcorn;
   const lightColours = ['#f41313','#1ec65e', '#ab65ed']
   // const lightColours = ['#13def4','#1eb5c6', '#65e0ed']
   const darkColours = ['#003d4c', '#000001', '#adadd4']
@@ -24,7 +25,7 @@ export default function Game({navigation, running, route}: any) {
     <>
        <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
         <View style={styles.header}>
-            <Header acornCount = {acornCount}/>
+            <Header bankedAcorn = {bankedAcorn}/>
         </View>
         <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}>
           <View style={styles.content}>
@@ -45,7 +46,7 @@ export default function Game({navigation, running, route}: any) {
                   // gameEngine.swap(entities())
                     break;
                   case 'win_con':
-                    // setBankedAcornCount
+                    addBankedAcorn(acornCount);
                     setAcornCount(0);
                     navigation.navigate('Win');
                     // gameEngine.stop();

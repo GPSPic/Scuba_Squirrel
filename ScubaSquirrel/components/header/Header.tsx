@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Acorn from './Acorn'
+import Acorn from './BankedAcorn'
 import Title from './Title'
 import MenuButton from '../buttons/MenuButton'
 
-export default function Header({acornCount}) {
+export default function Header({bankedAcorn}: any) {
   return (
     <View style={styles.header}>
-      <Acorn acornCount = {acornCount}></Acorn>
+      <Acorn bankedAcorn = {bankedAcorn}></Acorn>
       <Title></Title>
       <MenuButton></MenuButton>
     </View>
