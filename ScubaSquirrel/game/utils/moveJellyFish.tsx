@@ -8,9 +8,6 @@ const moveJellyFish = (entities: any)=>{
     const screenTopPos: number = 30;
     const screenBottomPos: number =  screenHeight - screenHeight/7 - 30;
     const jellyFishPosition: number = entities.JellyFish.body.position.y;
-    // console.log(`moveJellyFish: STP, SBP, mV, JP: ${screenTopPos}, ${screenBottomPos}, ${moveValue}, ${jellyFishPosition}`)
-
-    
     Matter.Body.translate(entities.JellyFish.body,{
       x:0,
       y:moveValue

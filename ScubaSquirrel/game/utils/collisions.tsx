@@ -46,7 +46,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                         }
                         
                         
-                        if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 95){
+                        if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 75){
                             Matter.Body.scale(puffaFish, 1.001, 1.001);
                             // After x ticks descale the fish
                         }
