@@ -4,7 +4,7 @@ import { View, Image } from 'react-native'
 
 
 const Cave = (props : any) => {
-  const imageURL = require('../../assets/caveEntry.png');
+  const imageURL = require('../../assets/submarine2.png');
   const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
   const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
   
@@ -25,6 +25,7 @@ const Cave = (props : any) => {
           height: heightBody,
           // backgroundColor: color,
         }}
+        resizeMode='contain'
       />
     </View>    
   )
