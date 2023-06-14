@@ -27,9 +27,14 @@ const gameStop =() => {
   setRunning(false);
 }
 
-const addBankedAcorn = (acornCount: number) => {
+const updateBankedAcorn = (acornCount: number) => {
   const newCount = bankedAcorn + acornCount;
-  setBankedAcorn(newCount);
+  if (newCount >= 0) {
+    setBankedAcorn(newCount);
+  } else {
+    setBankedAcorn(0);
+  }
+  
 }
 
 
@@ -42,13 +47,13 @@ console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
   return (
     <NavigationContainer>
       <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
-      <Stack.Navigator initialRouteName='LandingScreen'
+      <Stack.Navigator initialRouteName='Death'
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="LandingScreen" component={LandingScreen} initialParams={{running}}/>
         <Stack.Screen name="Home" component={Home} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
         <Stack.Screen name="About" component={About} initialParams={{bankedAcorn}}/>
         <Stack.Screen name="Tutorial" component={Tutorial} initialParams={{bankedAcorn}}/>
-        <Stack.Screen name="Game" component={Game} initialParams={{running, bankedAcorn, stopGame: gameStop, increaseBankedAcorn: addBankedAcorn}}/>
+        <Stack.Screen name="Game" component={Game} initialParams={{running, bankedAcorn, stopGame: gameStop, increaseBankedAcorn: updateBankedAcorn}}/>
         <Stack.Screen name="Death" component={Death} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
         <Stack.Screen name="Win" component={Win} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
         <Stack.Screen name="MenuPage" component={Menu}/>
