@@ -28,6 +28,7 @@ const handleCollision = (engine: any, dispatch: any) => {
             let wall;
             let obstacle;
             let cave;
+            let kelp;
             
             if (currentTime - lastProcessedCollisionTime >= throttleInterval) {
                 
@@ -137,6 +138,24 @@ const handleCollision = (engine: any, dispatch: any) => {
                             }
 
                             dispatch({ type: 'win_con' });
+                        }
+                    
+                    if (
+                        (bodyA.label === "Squirrel" && bodyB.label === "Kelp") ||
+                        (bodyA.label === "Kelp" && bodyB.label === "Squirrel")
+                        ) {
+            
+                            if (bodyA.label === "Squirrel") {
+                                kelp = bodyA;
+                                squirrel = bodyB;
+                                Matter.Body.setVelocity(squirrel, { x: (collisionX)*2.5, y: (collisionY)*2.5 });
+                            } else {
+                                squirrel = bodyA;
+                                kelp = bodyB;
+                                Matter.Body.setVelocity(squirrel, { x: (-collisionX * 2.5), y: (-collisionY * 2.5)});
+                            }
+
+                            
                         }
                 }
             }
