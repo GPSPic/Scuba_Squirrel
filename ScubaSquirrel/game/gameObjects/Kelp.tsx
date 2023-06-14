@@ -27,7 +27,7 @@ const Kelp = (props : any) => {
           top: yBody,
           width: widthBody,
           height: heightBody,
-          // backgroundColor: 'green'
+          backgroundColor: 'green'
         }}
       />
     </View>      

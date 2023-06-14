@@ -147,7 +147,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                         (bodyA.label === "Kelp" && bodyB.label === "Squirrel")
                         ) {
             
-                            if (bodyA.label === "Squirrel") {
+                            if (bodyA.label === "Kelp") {
                                 kelp = bodyA;
                                 squirrel = bodyB;
                             } else {
@@ -155,7 +155,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                                 kelp = bodyB;
                                 
                             }
-                            const slowingFactor = 10;
+                            const slowingFactor = 0.98;
                             Matter.Body.setVelocity(squirrel, {x: squirrel.velocity.x *slowingFactor, y: squirrel.velocity.y * slowingFactor})
                         }
 
