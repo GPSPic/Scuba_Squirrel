@@ -11,14 +11,18 @@ export default function About({route, navigation}: any) {
       <Header bankedAcorn={bankedAcorn}navigation={navigation}/>
       <View style={styles.content}>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>ABOUT</Text>
+        <Text style={styles.textHeader}>ABOUT</Text>
+          <Text style={styles.textHeader}></Text>
+          <Text style={styles.text}>Scuba Squirrel is a simple iOS/Android mobile game created by a group of software development students over the course of 2 weeks.</Text>
         </View>    
       </View>
-      <View style={styles.content}>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>TEST</Text>
+          <Text style={styles.textHeader}>CREDITS</Text>
+          <Text style={styles.text}></Text>
+          <Text style={styles.text}>freepik - image assets</Text>
+          <Text style={styles.text}>Silvana Roth - ScubaSquirrel animation</Text>
+          <Text style={styles.text}>Boris Berak - React Native Game Engine</Text>
         </View>    
-      </View>
     </LinearGradient>
   );
 }
@@ -37,13 +41,22 @@ const styles = StyleSheet.create({
     },
   textContainer: {
     flex: 1,
-    marginLeft: 30,
-    marginRight: 30,
+    marginLeft: 40,
+    marginRight: 40,
   },
-  text: {
+  textHeader: {
     color: '#feee00',
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
+    textDecorationLine: 'underline',
+  },
+  text: {
+    color: '#feee00',
+    fontSize: 15,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    letterSpacing: 1,
+    lineHeight: 25
   },
 });
