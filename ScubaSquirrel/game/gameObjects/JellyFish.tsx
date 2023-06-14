@@ -11,12 +11,13 @@ const JellyFish = (props : any) => {
   const imageNumber = props.imageNumber;
 
 
-  const imageURL = require('../../assets/fish/jellyfish.png')
+  const imageURLs = [require('../../assets/fish/jellyfish.png'),
+                     require('../../assets/fish/jellyfish2.png')]
   
   return (
     <View>
       <Image
-        source={imageURL} // Replace with the correct path to the GIF image
+        source={imageURLs[imageNumber]} // Replace with the correct path to the GIF image
         style={{
           position: 'absolute',
           left: xBody,
@@ -31,7 +32,7 @@ const JellyFish = (props : any) => {
   )
 }
 
-export default (world: any, color: string, pos: any, size: any): any => {
+export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
   
   const initialJellyFish: any = Matter.Bodies.circle(
     pos.x,
@@ -50,6 +51,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     body : initialJellyFish,
     color,
     pos,
+    imageNumber,
     renderer: <JellyFish/>
   }
 }
