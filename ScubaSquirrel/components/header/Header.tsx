@@ -8,9 +8,15 @@ export default function Header({bankedAcorn, navigation}: any) {
 
   return (
     <View style={styles.header}>
+      <View style={{flex:1}}>
       <Acorn bankedAcorn = {bankedAcorn}></Acorn>
-      <Title></Title>
-      <MenuButton navigation={navigation}></MenuButton>
+      </View>
+      <View style={{flex:1}}>
+        <Title/>
+      </View>
+      <View style={{flex:1}}>
+        <MenuButton navigation={navigation}></MenuButton>
+      </View>
     </View>
   )
 }
@@ -19,8 +25,8 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        marginTop: 25
+        marginTop: 35
     },
 })

@@ -30,6 +30,7 @@ export default function LandingScreen({navigation, running}: any) {
 }
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0)',
     justifyContent: 'space-evenly',
     alignItems: 'center',
