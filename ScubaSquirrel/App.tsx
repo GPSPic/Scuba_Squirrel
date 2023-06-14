@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useState } from 'react';
@@ -16,6 +16,7 @@ import Menu from './components/staticPages/menu';
 
 export default function App() {
 
+LogBox.ignoreLogs(['Non-serializable values were found in the navigation']);  
 const [running, setRunning] = useState(false);
 const [bankedAcorn, setBankedAcorn] = useState(0);
 
@@ -54,7 +55,7 @@ const screenHeight: number = Dimensions.get("screen").height;
         <Stack.Screen name="Game" component={Game} initialParams={{running, bankedAcorn, stopGame: gameStop, increaseBankedAcorn: updateBankedAcorn}}/>
         <Stack.Screen name="Death" component={Death} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
         <Stack.Screen name="Win" component={Win} initialParams={{reloadGame: gameReload, bankedAcorn}}/>
-        <Stack.Screen name="MenuPage" component={Menu}/>
+        <Stack.Screen name="MenuPage" component={Menu} initialParams={{bankedAcorn}}/>
       </Stack.Navigator> 
       </LinearGradient>
     </NavigationContainer>
