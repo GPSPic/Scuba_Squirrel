@@ -5,7 +5,6 @@ export default function StartButton({ navigation, gameReload }: any) {
 
   const gameRoute = () => {
     gameReload();
-    console.log(`called Game Reload`);
     navigation.navigate("Game");
   }
 

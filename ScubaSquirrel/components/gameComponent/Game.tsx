@@ -13,7 +13,7 @@ export default function Game({navigation, running, route}: any) {
   const [acornCount, setAcornCount] = useState(0)
   const [levelStreak, setLevelStreak] = useState(0)
   const gameStop = route.params.stopGame;
-  const addBankedAcorn = route.params.increaseBankedAcorn;
+  const updateBankedAcorn = route.params.increaseBankedAcorn;
   const bankedAcorn = route.params.bankedAcorn;
 
   const increaseStreakCount = (val: number) => {
@@ -32,7 +32,7 @@ export default function Game({navigation, running, route}: any) {
     <>
        <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
         <View style={styles.header}>
-            <Header bankedAcorn = {acornCount} navigation={navigation}/>
+            <Header bankedAcorn = {bankedAcorn} navigation={navigation}/>
         </View>
         <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}>
           <View style={styles.content}>
@@ -45,15 +45,20 @@ export default function Game({navigation, running, route}: any) {
                 switch(e.type){
                   case 'game_over' : 
                     gameStop();
-                    setAcornCount(0);
+                    updateBankedAcorn(-acornCount);
                     setLevelStreak(0);
-                  // gameEngine.stop()
+                    navigation.navigate("Death");
+
+                    setTimeout(() => {
+                      setAcornCount(0);
+                      gameEngine.swap(entities(levelStreak));
+                    }, 0)
                     break;
                   case 'collect_acorn': 
                   increaseStreakCount(1)
                     break;
                   case 'win_con':
-                    addBankedAcorn(acornCount);
+                    updateBankedAcorn(acornCount);
                     gameStop();
                     setLevelStreak((prevLevelStreak) => prevLevelStreak + 1)
                     navigation.navigate('Win');
