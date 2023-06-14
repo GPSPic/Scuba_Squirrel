@@ -26,11 +26,6 @@ export default function Death({ navigation, route }: any) {
   return (
     <LinearGradient style={styles.container} colors={['#79f8ff', '#0040a1']} start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}>
       <Header bankedAcorn={bankedAcorn} navigation={navigation}/>
-      {/* <View style={styles.content}>
-        <View style={styles.imageContainer}>
-        <Image source={require('../../assets/Squirrel_transparentDeath.png')} style={styles.image}/>    
-        </View>
-      </View> */}
       <View style={styles.content}>
         <View style={styles.textContainer}>
           <Text style={styles.text}></Text>

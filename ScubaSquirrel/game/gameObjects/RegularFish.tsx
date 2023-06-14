@@ -11,12 +11,16 @@ const RegularFish = (props : any) => {
   const imageNumber = props.imageNumber;
 
 
-  const Image1 = require('../../assets/fish/bluefish.png')
-  const Image2 = require('../../assets/fish/blueyellowfish.png')
-  const Image3 = require('../../assets/fish/pinkfish.png')
-  const Image4 = require('../../assets/fish/yellowfish.png')
-  const images = [Image1, Image2, Image3, Image4]
-
+  const images = [require('../../assets/fish/bluefish.png'), 
+                  require('../../assets/fish/blueyellowfish.png'),
+                  require('../../assets/fish/pinkfish.png'),
+                  require('../../assets/fish/yellowfish.png'),
+                  require('../../assets/fish/exoticfish1.png'),
+                  require('../../assets/fish/exoticfish2.png'),
+                  require('../../assets/fish/exoticfish3.png'),
+                  require('../../assets/fish/exoticfish4.png'),
+                  require('../../assets/fish/exoticfish5.png')
+                ];
 
 
   return (
@@ -31,6 +35,7 @@ const RegularFish = (props : any) => {
           width: widthBody,
           height: heightBody,
         }}
+        resizeMode='contain'
       />
    </View>
   )
