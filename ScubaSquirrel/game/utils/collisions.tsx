@@ -1,13 +1,15 @@
 import Matter, { World } from "matter-js";
 import Cave from "../gameObjects/Cave";
+import { Dimensions } from "react-native";
 
 
 const collidedPairs = new Set();
 
 const handleCollision = (engine: any, dispatch: any) => {
     // set interval to process collisions to 100ms and declare value for previous collision time variable
-    const throttleInterval = 100; 
-    let lastProcessedCollisionTime = 0;
+    const throttleInterval: number = 100; 
+    let lastProcessedCollisionTime: number = 0;
+    const screenWidth: number = Dimensions.get('window').width;
 
     Matter.Events.on(engine, 'collisionStart', (event) => {
         const collisionPairs = event.pairs;
@@ -26,6 +28,7 @@ const handleCollision = (engine: any, dispatch: any) => {
             let squirrel;
             let acorn;
             let cave;
+            let kelp;
             let jelly;
             let crab;
             // let wall;
@@ -48,8 +51,8 @@ const handleCollision = (engine: any, dispatch: any) => {
                         }
                         
                         
-                        if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 75){
-                            Matter.Body.scale(puffaFish, 1.001, 1.001);
+                        if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < screenWidth/12){
+                            Matter.Body.scale(puffaFish, 1.0005, 1.0005);
                             // After x ticks descale the fish
                         }
                     }
@@ -140,6 +143,25 @@ const handleCollision = (engine: any, dispatch: any) => {
 
                             dispatch({ type: 'win_con' });
                         }
+                    
+                    if (
+                        (bodyA.label === "Squirrel" && bodyB.label === "Kelp") ||
+                        (bodyA.label === "Kelp" && bodyB.label === "Squirrel")
+                        ) {
+            
+                            if (bodyA.label === "Kelp") {
+                                kelp = bodyA;
+                                squirrel = bodyB;
+                            } else {
+                                squirrel = bodyA;
+                                kelp = bodyB;
+                                
+                            }
+                            const slowingFactor = 0.98;
+                            Matter.Body.setVelocity(squirrel, {x: squirrel.velocity.x *slowingFactor, y: squirrel.velocity.y * slowingFactor})
+                        }
+
+                            
 
                     if (
                         (bodyA.label === "Squirrel" && bodyB.label === "JellyFish") ||
@@ -156,6 +178,7 @@ const handleCollision = (engine: any, dispatch: any) => {
 
                             dispatch({ type: 'game_over' });
                         }
+
                     if (
                         (bodyA.label === "Squirrel" && bodyB.label === "Crab") ||
                         (bodyA.label === "Crab" && bodyB.label === "Squirrel")
@@ -173,11 +196,9 @@ const handleCollision = (engine: any, dispatch: any) => {
                         }
                 }
             }
-        });
-    }
+        }
+    );
 
-    export default handleCollision;
-  
-  
+}
 
-  
+export default handleCollision;

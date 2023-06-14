@@ -2,11 +2,14 @@ import { StyleSheet, View, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function LandingScreen({navigation}: any) {
+export default function LandingScreen({navigation, running}: any) {
 
+
+  if (!running) {
   setTimeout(function() {
     navigation.navigate('Home')
   }, 3000);
+  }
 
   const navigateHome = () => {
     navigation.navigate('Home');

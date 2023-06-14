@@ -1,40 +1,44 @@
 import React from 'react'
 import Matter from 'matter-js'
 import { View, Image } from 'react-native'
-const imageURL = require('../../assets/seaweed/kelp2.png');
+const imageURLs = [require('../../assets/seaweed/kelp2.png'),
+                   require('../../assets/seaweed/kelp3.png'),
+                   require('../../assets/seaweed/kelp4.png'),
+                   require('../../assets/seaweed/kelp5.png'),
+                   require('../../assets/seaweed/seaweed1.png'),
+                   require('../../assets/seaweed/seaweed2.png'),
+                   require('../../assets/seaweed/seaweed3.png'),
+                   require('../../assets/seaweed/seaweed4.png'),
+                   require('../../assets/seaweed/seaweed5.png'),
+                  ];
 
 const Kelp = (props : any) => {
   const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
   const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
-  // const widthBody: number = props.body.size.width;
-  // const heightBody: number = props.body.size.height;
   const xBody = props.body.position.x-widthBody/2; 
   const yBody = props.body.position.y-heightBody/2;
-  // const xBody = props.body.pos.x;
-  // const yBody = props.body.pos.y;
-
-  // console.log (`WB/HB/XB/YB: ${widthBody}/${heightBody}/${xBody}/${yBody}`)
-
+  const imageNumber = props.imageNumber;
   const color = props.color
 
   return (
     <View>
       <Image
-        source={imageURL} // Replace with the correct path to the GIF image
+        source={imageURLs[imageNumber]} // Replace with the correct path to the GIF image
         style={{
           position: 'absolute',
           left: xBody,
           top: yBody,
           width: widthBody,
           height: heightBody,
-          // backgroundColor: 'green'
+          backgroundColor: 'green'
         }}
+        resizeMode='contain'
       />
     </View>      
   )
 }
 
-export default (world: any, color: string, pos: any, size: any): any => {
+export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
   
   const initialKelp: any = Matter.Bodies.rectangle(
     pos.x,
@@ -55,6 +59,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     body : initialKelp,
     color,
     pos,
+    imageNumber,
     renderer: <Kelp/>
   }
 }
