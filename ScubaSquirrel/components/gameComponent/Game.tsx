@@ -50,13 +50,9 @@ export default function Game({navigation, running, route}: any) {
                   // gameEngine.stop()
                     break;
                   case 'collect_acorn': 
-                  const newCount:number = acornCount + 1;
-                  increaseStreakCount(newCount)
-                  console.log(`Game dispatch collect_acorn count: ${acornCount}, ${newCount}`);
-                  // gameEngine.swap(entities())
+                  increaseStreakCount(1)
                     break;
                   case 'win_con':
-                    console.log(`Game dispatch win_con count: ${acornCount}`);
                     addBankedAcorn(acornCount);
                     gameStop();
                     setLevelStreak((prevLevelStreak) => prevLevelStreak + 1)
