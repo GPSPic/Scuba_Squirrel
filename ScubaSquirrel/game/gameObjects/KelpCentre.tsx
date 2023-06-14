@@ -11,8 +11,6 @@ const KelpCentre = (props : any) => {
 
     const color = props.color
 
-    console.log(`inside KelpCentre`)
-
     return (
         <View style = {{
             // backgroundColor: color,

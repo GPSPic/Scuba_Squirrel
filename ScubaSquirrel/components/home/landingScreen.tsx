@@ -8,23 +8,23 @@ export default function LandingScreen({navigation, running}: any) {
   if (!running) {
   setTimeout(function() {
     navigation.navigate('Home')
-  }, 3000);
+  }, 2000);
   }
 
-  const navigateHome = () => {
-    navigation.navigate('Home');
-  }
+  // const navigateHome = () => {
+  //   navigation.navigate('Home');
+  // }
 
   return ( 
     <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
-      <TouchableOpacity onPress={navigateHome}>  
+      {/* <TouchableOpacity onPress={navigateHome}>   */}
         <View>
             <Image source={require('../../assets/ScubaSquirrelLogo.png')} style={styles.logo}/>
         </View>
         <View>
             <Image source={require('../../assets/Squirrel_transparent.gif')} style={styles.squirrel} />
         </View>
-        </TouchableOpacity>
+        {/* </TouchableOpacity> */}
     </LinearGradient>
   )
 }
