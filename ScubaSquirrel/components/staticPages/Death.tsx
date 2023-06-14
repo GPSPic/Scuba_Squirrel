@@ -45,7 +45,7 @@ export default function Death({ navigation, route }: any) {
           <Text style={styles.text}>TRY AGAIN...</Text>
         </View>
       </View>
-      <View style={styles.buttonContainer}>
+      <View style={styles.content}>
         <StartButton navigation={navigation} gameReload={gameReload} />
       </View>
     </LinearGradient>
@@ -63,14 +63,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 50,
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 100,
   },
   textContainer: {
     flex: 1,

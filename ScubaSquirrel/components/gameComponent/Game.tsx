@@ -43,19 +43,18 @@ export default function Game({navigation, running, route}: any) {
               running = {running}
               onEvent = {(e:any) => {
                 switch(e.type){
-                  case 'game_over' : 
-                    gameStop();
+                  case 'game_over': 
                     updateBankedAcorn(-acornCount);
+                    gameStop();
                     setLevelStreak(0);
                     navigation.navigate("Death");
-
-                    setTimeout(() => {
+                    gameEngine.swap(entities(0));
+                    setTimeout(function() {
                       setAcornCount(0);
-                      gameEngine.swap(entities(levelStreak));
                     }, 0)
                     break;
                   case 'collect_acorn': 
-                  increaseStreakCount(1)
+                    increaseStreakCount(1)
                     break;
                   case 'win_con':
                     updateBankedAcorn(acornCount);
@@ -66,7 +65,7 @@ export default function Game({navigation, running, route}: any) {
                     setTimeout(function() {
                       setAcornCount(0);
                       gameEngine.swap(entities(levelStreak));
-                    }, 3000); 
+                    }, 0); 
                     break;
                 }
               }}

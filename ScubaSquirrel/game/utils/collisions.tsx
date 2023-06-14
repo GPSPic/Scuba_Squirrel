@@ -75,7 +75,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                             Matter.Body.setPosition(acorn, {x:500 , y:500})
                             collidedPairs.add(pairId);
                             dispatch({ type: 'collect_acorn' });
-                        }
+                    }
 
                     if (
                         (bodyA.label === "Cave" && bodyB.label === "Squirrel") ||
@@ -91,59 +91,23 @@ const handleCollision = (engine: any, dispatch: any) => {
                                 squirrel = bodyA;
                                 cave = bodyB;
                             }
-                            // Matter.Composite.remove(engine.world, cave)
-                            // Matter.Body.setPosition(cave, {x:500 , y:500})
                             collidedPairs.add(pairId);
                             dispatch({ type: 'win_con' });
-                        }
+                     }
 
-                    // if (
-                    //     (bodyA.label === "Squirrel" && bodyB.label === "Wall") ||
-                    //     (bodyA.label === "Wall" && bodyB.label === "Squirrel")
-                    //     ) {
-            
-                    //         if (bodyA.label === "Wall") {
-                    //             wall = bodyA;
-                    //             squirrel = bodyB;
-                    //         } else {
-                    //             squirrel = bodyA;
-                    //             wall = bodyB;
-                    //         }
-
-                    //         // dispatch({ type: 'game_over' });
-                    //     }
-
-                    // if (
-                    //     (bodyA.label === "Squirrel" && bodyB.label === "Obstacle") ||
-                    //     (bodyA.label === "Obstacle" && bodyB.label === "Squirrel")
-                    //     ) {
-            
-                    //         if (bodyA.label === "Obstacle") {
-                    //             obstacle = bodyA;
-                    //             squirrel = bodyB;
-                    //         } else {
-                    //             squirrel = bodyA;
-                    //             obstacle = bodyB;
-                    //         }
-
-                    //         // dispatch({ type: 'game_over' });
-                    // }
                     if (
-                        (bodyA.label === "Squirrel" && bodyB.label === "Cave") ||
-                        (bodyA.label === "Cave" && bodyB.label === "Squirrel")
+                        (bodyA.label === "Squirrel" && bodyB.label === "JellyFish") ||
+                        (bodyA.label === "JellyFish" && bodyB.label === "Squirrel") ||
+                        (bodyA.label === "Squirrel" && bodyB.label === "Crab") ||
+                        (bodyA.label === "Crab" && bodyB.label === "Squirrel")
                         ) {
-            
-                            if (bodyA.label === "Cave") {
-                                cave = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                cave = bodyB;
+                            if (collidedPairs.has(pairId)) {
+                                continue; 
                             }
+                            collidedPairs.add(pairId);
+                            dispatch({ type: 'game_over' });
+                    }
 
-                            dispatch({ type: 'win_con' });
-                        }
-                    
                     if (
                         (bodyA.label === "Squirrel" && bodyB.label === "Kelp") ||
                         (bodyA.label === "Kelp" && bodyB.label === "Squirrel")
@@ -157,42 +121,8 @@ const handleCollision = (engine: any, dispatch: any) => {
                                 kelp = bodyB;
                                 
                             }
-                            const slowingFactor = 0.98;
+                            const slowingFactor = 0.5;
                             Matter.Body.setVelocity(squirrel, {x: squirrel.velocity.x *slowingFactor, y: squirrel.velocity.y * slowingFactor})
-                        }
-
-                            
-
-                    if (
-                        (bodyA.label === "Squirrel" && bodyB.label === "JellyFish") ||
-                        (bodyA.label === "JellyFish" && bodyB.label === "Squirrel")
-                        ) {
-            
-                            if (bodyA.label === "JellyFish") {
-                                jelly = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                jelly = bodyB;
-                            }
-
-                            dispatch({ type: 'game_over' });
-                        }
-
-                    if (
-                        (bodyA.label === "Squirrel" && bodyB.label === "Crab") ||
-                        (bodyA.label === "Crab" && bodyB.label === "Squirrel")
-                        ) {
-            
-                            if (bodyA.label === "Crab") {
-                                crab = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                crab = bodyB;
-                            }
-
-                            dispatch({ type: 'game_over' });
                         }
                 }
             }

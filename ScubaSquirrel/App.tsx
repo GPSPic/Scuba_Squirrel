@@ -42,8 +42,6 @@ const Stack = createNativeStackNavigator();
 const screenWidth: number = Dimensions.get("screen").width;
 const screenHeight: number = Dimensions.get("screen").height;
 
-console.log(`App: width: ${screenWidth}, height: ${screenHeight}`)
-
   return (
     <NavigationContainer>
       <LinearGradient style = {styles.container} colors={['#79f8ff', '#0040a1']}start={{x:0, y:1}}end={{x:1, y:1}}>
