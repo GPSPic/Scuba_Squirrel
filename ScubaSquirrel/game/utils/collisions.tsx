@@ -28,6 +28,7 @@ const handleCollision = (engine: any, dispatch: any) => {
             let squirrel;
             let acorn;
             let cave;
+            let kelp;
             let jelly;
             let crab;
             // let wall;
@@ -142,6 +143,25 @@ const handleCollision = (engine: any, dispatch: any) => {
 
                             dispatch({ type: 'win_con' });
                         }
+                    
+                    if (
+                        (bodyA.label === "Squirrel" && bodyB.label === "Kelp") ||
+                        (bodyA.label === "Kelp" && bodyB.label === "Squirrel")
+                        ) {
+            
+                            if (bodyA.label === "Kelp") {
+                                kelp = bodyA;
+                                squirrel = bodyB;
+                            } else {
+                                squirrel = bodyA;
+                                kelp = bodyB;
+                                
+                            }
+                            const slowingFactor = 0.98;
+                            Matter.Body.setVelocity(squirrel, {x: squirrel.velocity.x *slowingFactor, y: squirrel.velocity.y * slowingFactor})
+                        }
+
+                            
 
                     if (
                         (bodyA.label === "Squirrel" && bodyB.label === "JellyFish") ||
@@ -158,6 +178,7 @@ const handleCollision = (engine: any, dispatch: any) => {
 
                             dispatch({ type: 'game_over' });
                         }
+
                     if (
                         (bodyA.label === "Squirrel" && bodyB.label === "Crab") ||
                         (bodyA.label === "Crab" && bodyB.label === "Squirrel")
@@ -175,7 +196,9 @@ const handleCollision = (engine: any, dispatch: any) => {
                         }
                 }
             }
-        });
-    }
+        }
+    );
 
-    export default handleCollision;
+}
+
+export default handleCollision;
