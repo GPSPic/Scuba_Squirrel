@@ -127,7 +127,7 @@ export default (level:number, restart: any) => {
       { x: DK2StartPos, y: screenHeight *0.4 }, 
       { height: 40, width: screenWidth }),
     DK2R: Obstacle(world, 'brown', 
-      { x: screenWidth + DK2StartPos + generic.getRandomValue(1.5*squirrelWidth,1.5*squirrelWidth), y: screenHeight * 0.4 }, 
+      { x: screenWidth + DK2StartPos + generic.getRandomValue(1.5*squirrelWidth,2.5*squirrelWidth), y: screenHeight * 0.4 }, 
       { height: 40, width: screenWidth }),
     DK3: Obstacle(world, 'brown', 
       { x: generic.getRandomValue((screenWidth/2)+squirrelWidth*1.5,screenWidth+squirrelWidth*1.5), y: screenHeight * .6 }, 
