@@ -25,10 +25,12 @@ const handleCollision = (engine: any, dispatch: any) => {
             let puffaFish;
             let squirrel;
             let acorn;
-            let wall;
-            let obstacle;
             let cave;
             let kelp;
+            let jelly;
+            let crab;
+            // let wall;
+            // let obstacle;
             
             if (currentTime - lastProcessedCollisionTime >= throttleInterval) {
                 
@@ -47,7 +49,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                         }
                         
                         
-                        if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 95){
+                        if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < 75){
                             Matter.Body.scale(puffaFish, 1.001, 1.001);
                             // After x ticks descale the fish
                         }
@@ -93,37 +95,37 @@ const handleCollision = (engine: any, dispatch: any) => {
                             dispatch({ type: 'win_con' });
                         }
 
-                    if (
-                        (bodyA.label === "Squirrel" && bodyB.label === "Wall") ||
-                        (bodyA.label === "Wall" && bodyB.label === "Squirrel")
-                        ) {
+                    // if (
+                    //     (bodyA.label === "Squirrel" && bodyB.label === "Wall") ||
+                    //     (bodyA.label === "Wall" && bodyB.label === "Squirrel")
+                    //     ) {
             
-                            if (bodyA.label === "Wall") {
-                                wall = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                wall = bodyB;
-                            }
+                    //         if (bodyA.label === "Wall") {
+                    //             wall = bodyA;
+                    //             squirrel = bodyB;
+                    //         } else {
+                    //             squirrel = bodyA;
+                    //             wall = bodyB;
+                    //         }
 
-                            // dispatch({ type: 'game_over' });
-                        }
+                    //         // dispatch({ type: 'game_over' });
+                    //     }
 
-                    if (
-                        (bodyA.label === "Squirrel" && bodyB.label === "Obstacle") ||
-                        (bodyA.label === "Obstacle" && bodyB.label === "Squirrel")
-                        ) {
+                    // if (
+                    //     (bodyA.label === "Squirrel" && bodyB.label === "Obstacle") ||
+                    //     (bodyA.label === "Obstacle" && bodyB.label === "Squirrel")
+                    //     ) {
             
-                            if (bodyA.label === "Obstacle") {
-                                obstacle = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                obstacle = bodyB;
-                            }
+                    //         if (bodyA.label === "Obstacle") {
+                    //             obstacle = bodyA;
+                    //             squirrel = bodyB;
+                    //         } else {
+                    //             squirrel = bodyA;
+                    //             obstacle = bodyB;
+                    //         }
 
-                            // dispatch({ type: 'game_over' });
-                    }
+                    //         // dispatch({ type: 'game_over' });
+                    // }
                     if (
                         (bodyA.label === "Squirrel" && bodyB.label === "Cave") ||
                         (bodyA.label === "Cave" && bodyB.label === "Squirrel")
@@ -148,22 +150,53 @@ const handleCollision = (engine: any, dispatch: any) => {
                             if (bodyA.label === "Squirrel") {
                                 kelp = bodyA;
                                 squirrel = bodyB;
-                                Matter.Body.setVelocity(squirrel, { x: (collisionX)*2.5, y: (collisionY)*2.5 });
                             } else {
                                 squirrel = bodyA;
                                 kelp = bodyB;
-                                Matter.Body.setVelocity(squirrel, { x: (-collisionX * 2.5), y: (-collisionY * 2.5)});
+                                
                             }
+                            const slowingFactor = 10;
+                            Matter.Body.setVelocity(squirrel, {x: squirrel.velocity.x *slowingFactor, y: squirrel.velocity.y * slowingFactor})
+                        }
 
                             
+
+                    if (
+                        (bodyA.label === "Squirrel" && bodyB.label === "JellyFish") ||
+                        (bodyA.label === "JellyFish" && bodyB.label === "Squirrel")
+                        ) {
+            
+                            if (bodyA.label === "JellyFish") {
+                                jelly = bodyA;
+                                squirrel = bodyB;
+                            } else {
+                                squirrel = bodyA;
+                                jelly = bodyB;
+                            }
+
+                            dispatch({ type: 'game_over' });
+                        }
+
+                    if (
+                        (bodyA.label === "Squirrel" && bodyB.label === "Crab") ||
+                        (bodyA.label === "Crab" && bodyB.label === "Squirrel")
+                        ) {
+            
+                            if (bodyA.label === "Crab") {
+                                crab = bodyA;
+                                squirrel = bodyB;
+                            } else {
+                                squirrel = bodyA;
+                                crab = bodyB;
+                            }
+
+                            dispatch({ type: 'game_over' });
                         }
                 }
             }
-        });
-    }
+        }
+    );
 
-    export default handleCollision;
-  
-  
+}
 
-  
+export default handleCollision;

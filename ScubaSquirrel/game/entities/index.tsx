@@ -21,7 +21,6 @@ export default (level:number, restart: any) => {
   const world = engine.world;
   engine.gravity.y = 0.0;
 
-  const squirrelWidth: number = 50;
   const screenWidth: number = Dimensions.get("window").width;
   const screenHeight: number = Dimensions.get("window").height;
   const flexParts = 7;
@@ -29,6 +28,8 @@ export default (level:number, restart: any) => {
   const gameBottom: number = (screenHeight-gameTop);
   const gameHeight: number = gameBottom;
   const gameMiddleY: number = gameHeight/2;
+  const squirrelWidth: number = gameHeight/15;
+  const squirrelHeight: number = squirrelWidth * 1.45;
   const DK2StartPos = generic.getRandomValue(- (screenWidth/2)+15, (screenWidth/2)-75 );
 
   // console.log(`SH, SH*1/7, SH*6/7, SH/2: ${screenHeight}, ${screenHeight*1/7}, ${screenHeight*6/7}, ${screenHeight/2}`)
@@ -105,7 +106,7 @@ export default (level:number, restart: any) => {
     WallRight: Wall(world, 'brown', { x: screenWidth+5, y: gameMiddleY }, { height: gameHeight, width: 40 },1),
     FloorBottom: Floor(world, 'yellow', { x: screenWidth / 2, y: gameBottom}, { height: 80, width: screenWidth }),
     DK1: Obstacle(world, 'brown', 
-      { x: generic.getRandomValue(-screenWidth/2+75,screenWidth/2-75), y: screenHeight *0.2 }, 
+      { x: generic.getRandomValue(-screenWidth/2+squirrelWidth*1.5,screenWidth/2-squirrelWidth*1.5), y: screenHeight *0.2 }, 
       { height: 40, width: screenWidth }),
     DK2L: Obstacle(world, 'brown', 
       { x: DK2StartPos, y: screenHeight *0.4 }, 
@@ -114,13 +115,13 @@ export default (level:number, restart: any) => {
       { x: screenWidth + DK2StartPos + generic.getRandomValue(1.5*squirrelWidth,2.5*squirrelWidth), y: screenHeight * 0.4 }, 
       { height: 40, width: screenWidth }),
     DK3: Obstacle(world, 'brown', 
-      { x: generic.getRandomValue((screenWidth/2)+75,screenWidth+75), y: screenHeight * .6 }, 
+      { x: generic.getRandomValue((screenWidth/2)+squirrelWidth*1.5,screenWidth+squirrelWidth*1.5), y: screenHeight * .6 }, 
       { height: 40, width: screenWidth }),
 
     Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: gameBottom - 20 }, { radius: 20 }),
     Cave: Cave(world, 'pink', { x: screenWidth-60, y:(gameBottom-40)}, { height: 75, width: 90 }),
     CaveCentre: CaveCentre(world, 'white', { x: screenWidth-60, y:(gameBottom-40)}, {radius: 5}),
-    Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: 75, width: squirrelWidth }),
+    Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: squirrelHeight, width: squirrelWidth }),
     ...totalObstacle,
     JellyFish: JellyFish(world, 'magenta', 
       {x:generic.getRandomValue(10,screenWidth - 30), y:generic.getRandomValue(gameTop+200,gameBottom - 30)}, 
