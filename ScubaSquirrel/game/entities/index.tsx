@@ -135,7 +135,7 @@ export default (level:number, restart: any) => {
 
     Acorn1: Acorn(world, 'green', { x: screenWidth / 8, y: gameBottom - 20 }, { radius: 20 }),
     CaveCentre: CaveCentre(world, 'white', { x: screenWidth-60, y:(gameBottom-40)}, {radius: 5}),
-    Cave: Cave(world, 'pink', { x: screenWidth-60, y:(gameBottom-40)}, { height: 80, width: 110 }),
+    Cave: Cave(world, 'pink', { x: screenWidth-60, y:(gameBottom-40)}, { height: 80, width: 110 },generic.getRandomValue(0,1)),
     Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: squirrelHeight, width: squirrelWidth }),
     ...totalObstacle,
     JellyFish: JellyFish(world, 'magenta', 

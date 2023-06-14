@@ -4,19 +4,19 @@ import { View, Image } from 'react-native'
 
 
 const Cave = (props : any) => {
-  const imageURL = require('../../assets/submarine2.png');
+  const images = [require('../../assets/submarine2.png'),require('../../assets/submarine.png')];
   const widthBody : number = props.body.bounds.max.x - props.body.bounds.min.x
   const heightBody : number = props.body.bounds.max.y - props.body.bounds.min.y
   
   const xBody = props.body.position.x - widthBody/2;
   const yBody = props.body.position.y - heightBody/2;
-
+  const imageNumber: number = props.imageNumber;
   const color = props.color
 
   return (
     <View>
       <Image
-        source={imageURL} // Replace with the correct path to the GIF image
+        source={images[imageNumber]} // Replace with the correct path to the GIF image
         style={{
           position: 'absolute',
           left: xBody,
@@ -31,7 +31,7 @@ const Cave = (props : any) => {
   )
 }
 
-export default (world: any, color: string, pos: any, size: any): any => {
+export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
   
   const initialCave: any = Matter.Bodies.rectangle(
     pos.x,
@@ -51,6 +51,7 @@ export default (world: any, color: string, pos: any, size: any): any => {
     body : initialCave,
     color,
     pos,
+    imageNumber,
     renderer: <Cave/>
   }
 }

@@ -127,52 +127,20 @@ const handleCollision = (engine: any, dispatch: any) => {
 
                     //         // dispatch({ type: 'game_over' });
                     // }
-                    if (
-                        (bodyA.label === "Squirrel" && bodyB.label === "Cave") ||
-                        (bodyA.label === "Cave" && bodyB.label === "Squirrel")
-                        ) {
-            
-                            if (bodyA.label === "Cave") {
-                                cave = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                cave = bodyB;
-                            }
-
-                            dispatch({ type: 'win_con' });
-                        }
 
                     if (
                         (bodyA.label === "Squirrel" && bodyB.label === "JellyFish") ||
-                        (bodyA.label === "JellyFish" && bodyB.label === "Squirrel")
-                        ) {
-            
-                            if (bodyA.label === "JellyFish") {
-                                jelly = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                jelly = bodyB;
-                            }
-
-                            dispatch({ type: 'game_over' });
-                        }
-                    if (
+                        (bodyA.label === "JellyFish" && bodyB.label === "Squirrel") ||
                         (bodyA.label === "Squirrel" && bodyB.label === "Crab") ||
                         (bodyA.label === "Crab" && bodyB.label === "Squirrel")
                         ) {
-            
-                            if (bodyA.label === "Crab") {
-                                crab = bodyA;
-                                squirrel = bodyB;
-                            } else {
-                                squirrel = bodyA;
-                                crab = bodyB;
+                            if (collidedPairs.has(pairId)) {
+                                continue; 
                             }
-
+                            collidedPairs.add(pairId);
                             dispatch({ type: 'game_over' });
                         }
+
                 }
             }
         });
