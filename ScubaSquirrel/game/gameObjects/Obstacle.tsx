@@ -52,7 +52,8 @@ export default (world: any, color: string, pos: any, size: any): any => {
         size.height,
         {
             label: 'Obstacle',
-            isStatic: true
+            isStatic: true,
+            friction: 0.02
         }
     )
     Matter.World.add(world, initialObstacle)

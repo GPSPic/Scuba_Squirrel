@@ -15,6 +15,7 @@ import RegularFish from '../gameObjects/RegularFish';
 import JellyFish from '../gameObjects/JellyFish';
 import Crab from '../gameObjects/Crab';
 import Seahorse from '../gameObjects/Seahorse';
+import KelpCentre from '../gameObjects/KelpCentre';
 
 
 export default (level:number, restart: any) => {
@@ -43,7 +44,8 @@ export default (level:number, restart: any) => {
       puffaFishEntities.push(PuffaFish(world, 'blue', 
       {x: generic.getRandomValue(30, screenWidth - 30), 
         y: generic.getRandomValue( 50, screenHeight*(flexParts-1)/flexParts - 50)},
-      {radius:generic.getRandomValue(10,20)},
+      {radius:10},
+      // {radius:generic.getRandomValue(10,20)},
       ));
     }
     return puffaFishEntities;
@@ -62,14 +64,20 @@ export default (level:number, restart: any) => {
   // }
 
   const randomKelp = () => {
-    const numberOfRandomKelp = generic.getRandomValue(2,(level + 2))
+    // const numberOfRandomKelp: number = 40
+    const numberOfRandomKelp: number = generic.getRandomValue(2,(level + 2))
     const kelpEntities = [];
     for(let i = 1; i <= numberOfRandomKelp; i++){
+      const kelpCentreX: number = generic.getRandomValue(30, screenWidth - 30);
+      const kelpCentreY: number = generic.getRandomValue( 50, screenHeight*(flexParts-1)/flexParts - 50);
       kelpEntities.push(Kelp(world, 'pink', 
-          {x: generic.getRandomValue(30, screenWidth - 30), 
-            y: generic.getRandomValue( 50, screenHeight*(flexParts-1)/flexParts - 50)},
+          {x: kelpCentreX, 
+            y: kelpCentreY},
           {height:generic.getRandomValue(80, 100), width: generic.getRandomValue(40,50)}, generic.getRandomValue(0,8)
-      ))
+          ))
+        kelpEntities.push(KelpCentre(world,'black',{x:kelpCentreX, y:kelpCentreY}, 
+          {height:10, width: 5}
+        ))
     }
     return kelpEntities
   }

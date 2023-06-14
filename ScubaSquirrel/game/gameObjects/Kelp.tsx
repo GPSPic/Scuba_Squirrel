@@ -30,7 +30,7 @@ const Kelp = (props : any) => {
           top: yBody,
           width: widthBody,
           height: heightBody,
-          backgroundColor: 'green'
+          // backgroundColor: 'green'
         }}
         resizeMode='contain'
       />
@@ -46,7 +46,7 @@ export default (world: any, color: string, pos: any, size: any, imageNumber: num
     size.width,
     size.height,
     {
-      label: 'Kelp',
+      label: 'KelpImage',
       isStatic: true,
       isSensor: true,
       restitution: 1,

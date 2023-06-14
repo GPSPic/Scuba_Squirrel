@@ -4,8 +4,9 @@ import Header from '../header/Header';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-export default function Menu({navigation}: any) {
+export default function Menu({navigation, route}: any) {
 
+  const bankedAcorn = route.params.bankedAcorn;
 
     const homeRoute = () => {
         navigation.navigate("Home");
@@ -20,7 +21,7 @@ export default function Menu({navigation}: any) {
     
   return (
     <LinearGradient style={styles.container} colors={['#79f8ff', '#0040a1']} start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}>
-      <Header navigation={navigation}/>
+      <Header bankedAcorn={bankedAcorn} navigation={navigation}/>
         <View style={styles.content}>
             <View style={styles.textContainer}>
             <TouchableOpacity style={styles.button} onPress={homeRoute}>

@@ -52,7 +52,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                         
                         
                         if ((puffaFish.bounds.max.x - puffaFish.bounds.min.x) < screenWidth/12){
-                            Matter.Body.scale(puffaFish, 1.0005, 1.0005);
+                            Matter.Body.scale(puffaFish, 1.005, 1.005);
                             // After x ticks descale the fish
                         }
                     }
@@ -121,7 +121,7 @@ const handleCollision = (engine: any, dispatch: any) => {
                                 kelp = bodyB;
                                 
                             }
-                            const slowingFactor = 0.5;
+                            const slowingFactor = 0.7;
                             Matter.Body.setVelocity(squirrel, {x: squirrel.velocity.x *slowingFactor, y: squirrel.velocity.y * slowingFactor})
                         }
                 }
