@@ -1,7 +1,7 @@
 # Scuba Squirrel
 
-![Squirrel_transparent.gif](https://github.com/GPSPic/Scuba_Squirrel/blob/main/ScubaSquirrel/assets/Squirrel_transparent.gif)
 <img src="https://github.com/GPSPic/Scuba_Squirrel/blob/main/ScubaSquirrel/assets/Squirrel_transparent.gif" width="200" height="200" />
+
 Scuba Squirrel is a simple iOS/Android mobile game created by a group of software development students over the course of 2 weeks.
 
 ### Try the Game!
