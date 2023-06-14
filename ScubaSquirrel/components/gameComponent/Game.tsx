@@ -44,7 +44,7 @@ export default function Game({navigation, running, route}: any) {
               onEvent = {(e:any) => {
                 switch(e.type){
                   case 'game_over': 
-                    updateBankedAcorn(-acornCount);
+                    // updateBankedAcorn(-acornCount);
                     gameStop();
                     setLevelStreak(0);
                     navigation.navigate("Death");
