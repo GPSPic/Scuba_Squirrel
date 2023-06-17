@@ -122,10 +122,10 @@ export default (level:number, restart: any) => {
     const numberOfRandomJellyFish: number = generic.getRandomValue(1,(level + 1))
     const JellyFishEntities = [];
     for(let i = 1; i <= numberOfRandomJellyFish; i++){
-      JellyFishEntities.push(world, 'yellow', 
+      JellyFishEntities.push(JellyFish(world, 'yellow', 
       {x:generic.getRandomValue(10,screenWidth - 30), y:generic.getRandomValue(gameTop+200,gameBottom - 30)}, 
       {radius:generic.getRandomValue(15,30)},generic.getRandomValue(0,1), generic.getRandomDirection())
-    }
+    )}
     return JellyFishEntities
   }
 

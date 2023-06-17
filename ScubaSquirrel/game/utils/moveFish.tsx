@@ -34,8 +34,6 @@ const moveFish = (entities: any) => {
       y: 0,
     });
   }
-
-  console.log(`fish mv: ${fishEntities[0].moveValue}`);
 };
 
 export default moveFish;

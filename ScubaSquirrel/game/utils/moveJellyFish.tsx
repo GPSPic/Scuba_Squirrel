@@ -35,7 +35,7 @@ const moveJellyFish = (entities: any) => {
     });
   }
 
-  console.log(`fish mv: ${jellyFishEntities[0].moveValue}`);
+//   console.log(`fish mv: ${jellyFishEntities[0].moveValue}`);
 };
 
 export default moveJellyFish;
