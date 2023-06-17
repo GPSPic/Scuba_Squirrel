@@ -120,6 +120,10 @@ export default (level:number, restart: any) => {
 
   const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish(),...randomAcorn()]
 
+  // for (let obstacle of totalObstacle) {
+  //   Matter.Body.translate(obstacle.body,{x: 5, y:2})
+  // }
+
   return {
     physics: { engine, world },
     Roof: Roof(world,'green',{x:screenWidth/2, y:-1},{height:2,width: screenWidth}),

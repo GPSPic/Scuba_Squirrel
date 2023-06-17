@@ -5,6 +5,7 @@ import moveSquirrel from "./moveSquirrel";
 import handleCollision from "./collisions";
 import moveCrab from "./moveCrab";
 import moveJellyFish from "./moveJellyFish";
+import moveFish from "./moveFish";
 
 const Physics =(entities: any, {touches, time, dispatch} : any) => {
   let engine= entities.physics.engine
@@ -13,6 +14,7 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
     handleCollision(engine, dispatch);
     moveCrab(entities);    
     moveJellyFish(entities);
+    moveFish(entities)
                     
     Matter.Engine.update(engine, time.delta)
                     
