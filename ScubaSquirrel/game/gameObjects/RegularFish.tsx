@@ -55,6 +55,10 @@ export default (world: any, color: string, pos: any, size: any, imageNumber: num
       restitution: 1,
       density:100,
       mass:150,
+      collisionFilter: {
+        category: 0x0002, 
+        mask: 0x0001, 
+      }
     },
   )
   Matter.World.add(world, initialRegularFish)

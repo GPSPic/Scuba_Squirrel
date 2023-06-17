@@ -42,6 +42,10 @@ export default (world: any, color: string, pos: any, size: any, imageNumber: num
       label: 'JellyFish',
       restitution: 1,
       isSensor: true,
+      collisionFilter: {
+        category: 0x0002, 
+        mask: 0x0001, 
+      }
     },
   )
   

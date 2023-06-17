@@ -14,7 +14,7 @@ const moveFish = (entities: any) => {
   Object.values(filteredEntities).forEach((value: any) => {
     if (value.body.label === "RegularFish") {
       const fishPosition: number = value.body.position.x;
-        console.log(fishPosition)
+        
 
       let moveValue;
         
@@ -27,6 +27,7 @@ const moveFish = (entities: any) => {
       fishEntities.push({ fish: value, moveValue });
   }
 });
+
 
   for (const fish of fishEntities) {
     Matter.Body.translate(fish.fish.body, {

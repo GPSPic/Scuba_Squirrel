@@ -28,10 +28,11 @@ const moveJellyFish = (entities: any) => {
   }
 });
 
+
   for (const jellyFish of jellyFishEntities) {
     Matter.Body.translate(jellyFish.jellyFish.body, {
-      x: jellyFish.moveValue,
-      y: 0,
+      x: 0,
+      y: jellyFish.moveValue,
     });
   }
 

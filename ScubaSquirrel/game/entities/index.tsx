@@ -91,8 +91,8 @@ export default (level:number, restart: any) => {
       niceFishEntities.push(RegularFish(world, 'pink', 
             {x:generic.getRandomValue(20,screenWidth-20), 
               y: generic.getRandomValue(50, screenHeight*(flexParts-1)/flexParts - 50)},
-              {height:generic.getRandomValue(20, 30), width: generic.getRandomValue(25,45)}, generic.getRandomValue(0,8),generic.getRandomDirection()
-        ))
+              {height:generic.getRandomValue(20, 30), width: generic.getRandomValue(25,45)}, generic.getRandomValue(0,8),generic.getRandomDirection()))
+        
       }
       const chanceOfSeahorse: number = generic.getRandomValue(1,10);
       if (chanceOfSeahorse == 1){
