@@ -1,27 +1,45 @@
 import Matter from "matter-js";
 import { Dimensions } from "react-native";
+import generic from "./generic";
 
-let moveValue: number = 1;
+const moveJellyFish = (entities: any) => {
+  const filteredEntities = Object.fromEntries(
+    Object.entries(entities).filter(([key]) => !isNaN(parseInt(key)))
+  );
 
-const moveJellyFish = (entities: any)=>{
-    const screenHeight: number = Dimensions.get('window').height;
-    const screenTopPos: number = 30;
-    const screenBottomPos: number =  screenHeight - screenHeight/7 - 30;
-    const jellyFishPosition: number = entities.JellyFish.body.position.y;
-    Matter.Body.translate(entities.JellyFish.body,{
-      x:0,
-      y:moveValue
-    })
+  let jellyFishEntities: any[] = [];
+  const screenLeftPos: number = 50;
+  const screenRightPos: number = Dimensions.get("screen").width - 50;
 
-    if(jellyFishPosition <= screenTopPos ){
-        // Matter.Body.translate(entities.JellyFish.body,{x:-10,y:0})
-        moveValue = 1;
-        // console.log(`at right: ${JellyFishPosition}`)
+  Object.values(filteredEntities).forEach((value: any) => {
+    if (value.body.label === 'JellyFish') {
+      const jellyFishPosition: number = value.body.position.x;
+        
+
+      let moveValue;
+        
+      if (jellyFishPosition >= screenRightPos) {
+        value.direction *= -1
+      } else if (jellyFishPosition <= screenLeftPos) {
+        value.direction *= -1
     }
-    if(jellyFishPosition >= screenBottomPos){
-        moveValue = -1;
-        // console.log(`at left: ${JellyFishPosition}`)
-    }
-}    
+    moveValue = value.direction * generic.getRandomValue(1,3)
+      jellyFishEntities.push({ jellyFish: value, moveValue });
+  }
+});
+
+  for (const jellyFish of jellyFishEntities) {
+    Matter.Body.translate(jellyFish.jellyFish.body, {
+      x: jellyFish.moveValue,
+      y: 0,
+    });
+  }
+
+  console.log(`fish mv: ${jellyFishEntities[0].moveValue}`);
+};
 
 export default moveJellyFish;
+
+
+
+

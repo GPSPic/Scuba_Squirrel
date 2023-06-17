@@ -1,50 +1,45 @@
 import Matter from "matter-js";
 import { Dimensions } from "react-native";
-
-let moveValue: number = 1;
+import generic from "./generic";
 
 const moveFish = (entities: any) => {
-    // filtered keys that are 'numbers' - thank you the oracle for !isNaN
   const filteredEntities = Object.fromEntries(
     Object.entries(entities).filter(([key]) => !isNaN(parseInt(key)))
   );
 
-  let fishEntities = [];
+  let fishEntities: any[] = [];
+  const screenLeftPos: number = 50;
+  const screenRightPos: number = Dimensions.get("screen").width - 50;
 
-// our structure looked like '1' : {body, ...etc} - though it didn't look like it.  
   Object.values(filteredEntities).forEach((value: any) => {
     if (value.body.label === "RegularFish") {
-      fishEntities.push(value);
+      const fishPosition: number = value.body.position.x;
+        console.log(fishPosition)
+
+      let moveValue;
+        
+      if (fishPosition >= screenRightPos) {
+        value.direction *= -1
+      } else if (fishPosition <= screenLeftPos) {
+        value.direction *= -1
     }
-  });
+    moveValue = value.direction * generic.getRandomValue(1,3)
+      fishEntities.push({ fish: value, moveValue });
+  }
+});
 
   for (const fish of fishEntities) {
-    Matter.Body.translate(fish.body, {
-      x: moveValue,
+    Matter.Body.translate(fish.fish.body, {
+      x: fish.moveValue,
       y: 0,
     });
   }
 
-  const screenLeftPos: number = 50;
-  const screenRightPos: number = Dimensions.get("screen").width - 50;
-
-  for (const fish of fishEntities) {
-    const fishPosition: number = fish.body.position.x;
-
-    if (fishPosition >= screenRightPos) {
-      moveValue = -1;
-    }
-
-    if (fishPosition <= screenLeftPos) {
-      moveValue = 1;
-    }
-  }
-
-//   console.log(filteredEntities);
-//   console.log(fishEntities);
-//   console.log(`moveFish: SLP, SRP, mV: ${screenLeftPos}, ${screenRightPos}, ${moveValue}`);
+  console.log(`fish mv: ${fishEntities[0].moveValue}`);
 };
 
 export default moveFish;
+
+
 
 

@@ -32,7 +32,7 @@ const JellyFish = (props : any) => {
   )
 }
 
-export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
+export default (world: any, color: string, pos: any, size: any, imageNumber: number, direction: number): any => {
   
   const initialJellyFish: any = Matter.Bodies.circle(
     pos.x,
@@ -52,6 +52,7 @@ export default (world: any, color: string, pos: any, size: any, imageNumber: num
     color,
     pos,
     imageNumber,
+    direction,
     renderer: <JellyFish/>
   }
 }

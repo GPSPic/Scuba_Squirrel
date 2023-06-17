@@ -13,8 +13,9 @@ const Physics =(entities: any, {touches, time, dispatch} : any) => {
     moveSquirrel(entities, touches);   
     handleCollision(engine, dispatch);
     moveCrab(entities);    
+    
     moveJellyFish(entities);
-    moveFish(entities)
+    moveFish(entities);
                     
     Matter.Engine.update(engine, time.delta)
                     

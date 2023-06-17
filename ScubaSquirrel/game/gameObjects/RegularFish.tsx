@@ -41,7 +41,7 @@ const RegularFish = (props : any) => {
   )
 }
 
-export default (world: any, color: string, pos: any, size: any, imageNumber: number): any => {
+export default (world: any, color: string, pos: any, size: any, imageNumber: number, direction:number): any => {
 
 
   const initialRegularFish: any = Matter.Bodies.rectangle(
@@ -63,6 +63,7 @@ export default (world: any, color: string, pos: any, size: any, imageNumber: num
     color,
     pos,
     imageNumber,
+    direction,
     renderer: <RegularFish/>
   }
 }
