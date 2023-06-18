@@ -9,23 +9,24 @@ const moveFish = (entities: any) => {
 
   let fishEntities: any[] = [];
   const screenLeftPos: number = 50;
-  const screenRightPos: number = Dimensions.get("screen").width - 50;
+  const screenRightPos: number = Dimensions.get("window").width - 50;
 
-  Object.values(filteredEntities).forEach((value: any) => {
-    if (value.body.label === "RegularFish") {
-      const fishPosition: number = value.body.position.x;
+  Object.values(filteredEntities).forEach((fish: any) => {
+    if (fish.body.label === "RegularFish") {
+      const fishPosition: number = fish.body.position.x;
         
       let moveValue;
         
       if (fishPosition >= screenRightPos + 80) {
-        value.direction *= -1;
-        value.imageNumber = generic.getRandomValue(0,8)
+        fish.direction *= -1;
+        fish.imageNumber = generic.getRandomValue(0,8)
       } else if (fishPosition <= screenLeftPos -80) {
-        value.direction *= -1;
-        value.imageNumber = generic.getRandomValue(0,8)
+        fish.direction *= -1;
+        // want to select from an array of images facing left to right. 
+        fish.imageNumber = generic.getRandomValue(0,8)
     }
-    moveValue = value.direction * generic.getRandomValue(1,3);
-    fishEntities.push({ fish: value, moveValue });
+    moveValue = fish.direction * generic.getRandomValue(1,3);
+    fishEntities.push({ fish, moveValue });
   }
 });
 

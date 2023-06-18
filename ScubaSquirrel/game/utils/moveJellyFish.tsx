@@ -9,30 +9,30 @@ const moveJellyFish = (entities: any) => {
 
   let jellyFishEntities: any[] = [];
   const screenLeftPos: number = 50;
-  const screenRightPos: number = Dimensions.get("screen").width - 50;
+  const screenRightPos: number = Dimensions.get("window").width - 50;
 
-  Object.values(filteredEntities).forEach((value: any) => {
-    if (value.body.label === 'JellyFish') {
-      const jellyFishPosition: number = value.body.position.x;
+  Object.values(filteredEntities).forEach((jellyFish: any) => {
+    if (jellyFish.body.label === 'JellyFish') {
+      const jellyFishPosition: number = jellyFish.body.position.x;
         
 
       let moveValue;
         
       if (jellyFishPosition >= screenRightPos) {
-        value.direction *= -1
+        jellyFish.direction *= -1
       } else if (jellyFishPosition <= screenLeftPos) {
-        value.direction *= -1
+        jellyFish.direction *= -1
     }
-    moveValue = value.direction * generic.getRandomValue(1,3)
-      jellyFishEntities.push({ jellyFish: value, moveValue });
+    moveValue = jellyFish.direction * generic.getRandomValue(1,3)
+      jellyFishEntities.push({ jellyFish, moveValue });
   }
 });
 
 
-  for (const jellyFish of jellyFishEntities) {
-    Matter.Body.translate(jellyFish.jellyFish.body, {
+  for (const item of jellyFishEntities) {
+    Matter.Body.translate(item.jellyFish.body, {
       x: 0,
-      y: jellyFish.moveValue,
+      y: item.moveValue,
     });
   }
 
