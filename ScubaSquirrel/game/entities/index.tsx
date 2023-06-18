@@ -89,7 +89,7 @@ export default (level:number, restart: any) => {
     for(let i = 1; i <= numberOfRandomNiceFish; i++){
 
       niceFishEntities.push(RegularFish(world, 'pink', 
-            {x:generic.getRandomValue(20,screenWidth-20), 
+            {x:generic.getRandomValue(20,screenWidth), 
               y: generic.getRandomValue(50, screenHeight*(flexParts-1)/flexParts - 50)},
               {height:generic.getRandomValue(20, 30), width: generic.getRandomValue(25,45)}, generic.getRandomValue(0,8),generic.getRandomDirection()))
         

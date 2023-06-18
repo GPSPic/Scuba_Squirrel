@@ -15,23 +15,24 @@ const moveFish = (entities: any) => {
     if (value.body.label === "RegularFish") {
       const fishPosition: number = value.body.position.x;
         
-
       let moveValue;
         
-      if (fishPosition >= screenRightPos) {
-        value.direction *= -1
-      } else if (fishPosition <= screenLeftPos) {
-        value.direction *= -1
+      if (fishPosition >= screenRightPos + 80) {
+        value.direction *= -1;
+        value.imageNumber = generic.getRandomValue(0,8)
+      } else if (fishPosition <= screenLeftPos -80) {
+        value.direction *= -1;
+        value.imageNumber = generic.getRandomValue(0,8)
     }
-    moveValue = value.direction * generic.getRandomValue(1,3)
-      fishEntities.push({ fish: value, moveValue });
+    moveValue = value.direction * generic.getRandomValue(1,3);
+    fishEntities.push({ fish: value, moveValue });
   }
 });
 
 
-  for (const fish of fishEntities) {
-    Matter.Body.translate(fish.fish.body, {
-      x: fish.moveValue,
+  for (const item of fishEntities) {
+    Matter.Body.translate(item.fish.body, {
+      x: item.moveValue,
       y: 0,
     });
   }
