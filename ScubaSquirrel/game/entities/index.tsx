@@ -84,7 +84,7 @@ export default (level:number, restart: any) => {
 
   const randomRegularFish = () => {
     // const numberOfRandomNiceFish: number = 40;
-    const numberOfRandomNiceFish: number = generic.getRandomValue(10,2*(level + 1))
+    const numberOfRandomNiceFish: number = generic.getRandomValue(4,2*(level + 1))
     const niceFishEntities = [];
     for(let i = 1; i <= numberOfRandomNiceFish; i++){
 

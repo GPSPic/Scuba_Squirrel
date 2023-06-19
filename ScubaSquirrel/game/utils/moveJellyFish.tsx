@@ -8,19 +8,18 @@ const moveJellyFish = (entities: any) => {
   );
 
   let jellyFishEntities: any[] = [];
-  const screenLeftPos: number = 50;
-  const screenRightPos: number = Dimensions.get("window").width - 50;
+  const screenFloor: number = 50;
+  const screenHeight: number = Dimensions.get("window").height - 50;
 
   Object.values(filteredEntities).forEach((jellyFish: any) => {
     if (jellyFish.body.label === 'JellyFish') {
-      const jellyFishPosition: number = jellyFish.body.position.x;
-        
+      const jellyFishPosition: number = jellyFish.body.position.y;
 
       let moveValue;
         
-      if (jellyFishPosition >= screenRightPos) {
+      if (jellyFishPosition >= screenHeight) {
         jellyFish.direction *= -1
-      } else if (jellyFishPosition <= screenLeftPos) {
+      } else if (jellyFishPosition <= screenFloor) {
         jellyFish.direction *= -1
     }
     moveValue = jellyFish.direction * generic.getRandomValue(1,3)
