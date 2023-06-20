@@ -20,7 +20,7 @@ const moveJellyFish = (entities: any)=>{
     .forEach((jellyFish: any) => {
       if (jellyFish.body.label === 'JellyFish') {
         const jellyFishPosition: number = jellyFish.body.position.y;
-        console.log(jellyFishPosition)
+        // console.log(jellyFishPosition)
         
         let moveValue;
         
@@ -29,7 +29,8 @@ const moveJellyFish = (entities: any)=>{
         } else if (jellyFishPosition >= screenBottomPos) {
           jellyFish.direction *= -1
         }
-        moveValue = jellyFish.direction * generic.getRandomValue(1,2) 
+        moveValue = jellyFish.direction 
+        // * generic.getRandomValue(1,2) 
       
         jellyFishEntities.push({ jellyFish, moveValue });
       }
