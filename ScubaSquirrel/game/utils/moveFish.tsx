@@ -17,10 +17,10 @@ const moveFish = (entities: any) => {
         
       let moveValue;
         
-      if (fishPosition >= screenRightPos + 80) {
+      if (fishPosition >= screenRightPos +80) {
         fish.direction *= -0.5;
         fish.imageNumber = generic.getRandomValue(0,8)
-      } else if (fishPosition <= screenLeftPos -80) {
+      } else if (fishPosition <= screenLeftPos -80 ) {
         fish.direction *= -0.5;
         // want to select from an array of images facing left to right. 
         fish.imageNumber = generic.getRandomValue(0,8)
