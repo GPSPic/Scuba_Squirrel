@@ -137,7 +137,7 @@ export default (level:number, restart: any) => {
 
   return {
     physics: { engine, world },
-    Roof: Roof(world,'green',{x:screenWidth/2, y:-1},{height:2,width: screenWidth}),
+    Roof: Roof(world,'white',{x:screenWidth/2, y:-1},{height:2,width: screenWidth}),
     Floor: Roof(world,'white',{x:screenWidth/2, y:gameBottom - 2},{height:4,width: screenWidth}),
     // WallLeft: Wall(world, 'brown', { x: -5, y: screenHeight/2 }, { height: screenHeight, width: 40 },0),
     WallLeft: Wall(world, 'brown', { x: -5, y: gameMiddleY }, { height: gameHeight, width: 40 },0),
