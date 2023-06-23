@@ -51,22 +51,22 @@ export default function Tutorial({ route, navigation }) {
       <View style={styles.content}>
         <View style={styles.fish}>
           <Image
-            source={require('../../assets/fish/yellowfish.png')}
+            source={require('../../assets/fish/yellowfishL.png')}
             style={styles.image}
             resizeMode="contain"
           />
           <Image
-            source={require('../../assets/fish/pinkfish.png')}
+            source={require('../../assets/fish/pinkfishL.png')}
             style={styles.image}
             resizeMode="contain"
           />
           <Image
-            source={require('../../assets/fish/blueyellowfish.png')}
+            source={require('../../assets/fish/blueyellowfishR.png')}
             style={styles.image}
             resizeMode="contain"
           />
           <Image
-            source={require('../../assets/fish/bluefish.png')}
+            source={require('../../assets/fish/bluefishR.png')}
             style={styles.image}
             resizeMode="contain"
           />

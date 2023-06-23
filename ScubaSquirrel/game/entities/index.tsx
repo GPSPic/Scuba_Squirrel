@@ -89,10 +89,10 @@ export default (level:number, restart: any) => {
     for(let i = 1; i <= numberOfRandomNiceFish; i++){
 
       niceFishEntities.push(RegularFish(world, 'pink', 
-            {x:generic.getRandomValue(20,screenWidth-20), 
+            {x:generic.getRandomValue(20,screenWidth), 
               y: generic.getRandomValue(50, screenHeight*(flexParts-1)/flexParts - 50)},
-              {height:generic.getRandomValue(20, 30), width: generic.getRandomValue(25,45)}, generic.getRandomValue(0,8)
-        ))
+              {height:generic.getRandomValue(30, 40), width: generic.getRandomValue(35,55)}, generic.getRandomValue(0,8),generic.getRandomDirection()))
+        
       }
       const chanceOfSeahorse: number = generic.getRandomValue(1,10);
       if (chanceOfSeahorse == 1){
@@ -118,7 +118,22 @@ export default (level:number, restart: any) => {
     return AcornEntities
   }
 
-  const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish(),...randomAcorn()]
+  const randomJellyFish = () => {
+    const numberOfRandomJellyFish: number = generic.getRandomValue(1,(level + 1))
+    const JellyFishEntities = [];
+    for(let i = 1; i <= numberOfRandomJellyFish; i++){
+      JellyFishEntities.push(JellyFish(world, 'yellow', 
+      {x:generic.getRandomValue(10,screenWidth - 30), y:generic.getRandomValue(gameTop+200,gameBottom - 30)}, 
+      {radius:generic.getRandomValue(15,30)},generic.getRandomValue(0,1), generic.getRandomDirection())
+    )}
+    return JellyFishEntities
+  }
+
+  const totalObstacle = [...randomKelp(), ...randomPuffaFish(), ...randomRegularFish(),...randomAcorn(),...randomJellyFish()]
+
+  // for (let obstacle of totalObstacle) {
+  //   Matter.Body.translate(obstacle.body,{x: 5, y:2})
+  // }
 
   return {
     physics: { engine, world },
@@ -146,9 +161,9 @@ export default (level:number, restart: any) => {
     Cave: Cave(world, 'pink', { x: screenWidth-60, y:(gameBottom-40)}, { height: 80, width: 110 },generic.getRandomValue(0,1)),
     Squirrel: Squirrel(world, 'orange', { x: screenWidth / 2, y: 30 }, { height: squirrelHeight, width: squirrelWidth }),
     ...totalObstacle,
-    JellyFish: JellyFish(world, 'magenta', 
-      {x:generic.getRandomValue(10,screenWidth - 30), y:generic.getRandomValue(gameTop+200,gameBottom - 30)}, 
-      {radius:generic.getRandomValue(15,30)},generic.getRandomValue(0,1)),
+    // JellyFish: JellyFish(world, 'magenta', 
+      // {x:generic.getRandomValue(10,screenWidth - 30), y:generic.getRandomValue(gameTop+200,gameBottom - 30)}, 
+      // {radius:generic.getRandomValue(15,30)},generic.getRandomValue(0,1)),
     Crab: Crab(world, 'red', {x: screenWidth/3, y:gameBottom-30}, {radius: 30})
   }
 }  

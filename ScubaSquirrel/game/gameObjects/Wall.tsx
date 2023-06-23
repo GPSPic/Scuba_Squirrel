@@ -42,7 +42,11 @@ export default (world: any, color: string, pos: any, size: any, leftRightInd: nu
             label: 'Wall',
             isStatic: true,
             // restitution: 0.5
-            friction: 0.02
+            friction: 0.02,
+            collisionFilter: {
+              category: 0x0002, 
+              mask: 0x0001, 
+            }
         }
     )
     Matter.World.add(world, initialWall)

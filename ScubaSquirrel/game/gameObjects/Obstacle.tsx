@@ -36,6 +36,7 @@ const Obstacle = (props : any) => {
             top: yBody,
             width: widthBody,
             height: heightBody,
+            
           }}
         />
      </View>      
@@ -53,7 +54,11 @@ export default (world: any, color: string, pos: any, size: any): any => {
         {
             label: 'Obstacle',
             isStatic: true,
-            friction: 0.02
+            friction: 0.02,
+            collisionFilter: {
+                category: 0x0002, 
+                mask: 0x0001, 
+              }
         }
     )
     Matter.World.add(world, initialObstacle)

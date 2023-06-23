@@ -17,11 +17,11 @@ const moveCrab = (entities: any)=>{
 
     if(crabPosition >= screenRightPos ){
         // Matter.Body.translate(entities.Crab.body,{x:-10,y:0})
-        moveValue = -1;
+        moveValue = -0.5;
         // console.log(`at right: ${crabPosition}`)
     }
     if(crabPosition <= screenLeftPos){
-        moveValue = 1;
+        moveValue = 0.5;
         // console.log(`at left: ${crabPosition}`)
     }
 }    
