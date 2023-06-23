@@ -5,7 +5,7 @@ class Generic {
     }
     
     getRandomDirection() {
-        return Math.random() < 0.5 ? -1 : 1;
+        return Math.random() < 0.5 ? -0.5 : 0.5;
       }
 }
 export default new Generic
