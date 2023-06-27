@@ -34,8 +34,8 @@ export default (level:number, restart: any) => {
   const squirrelHeight: number = squirrelWidth * 1.45;
   const DK2StartPos: number = generic.getRandomValue(- (screenWidth/2)+15, (screenWidth/2)-75 );
 
-  console.log(`SH, SH*1/8, SH*6/8, SH/2: ${screenHeight}, ${screenHeight*1/8}, ${screenHeight*6/8}, ${screenHeight/2}`)
-  console.log(`GT, GB, GH, GMY: ${gameTop}, ${gameBottom}, ${gameHeight}, ${gameMiddleY}`)
+  // console.log(`SH, SH*1/8, SH*6/8, SH/2: ${screenHeight}, ${screenHeight*1/8}, ${screenHeight*6/8}, ${screenHeight/2}`)
+  // console.log(`GT, GB, GH, GMY: ${gameTop}, ${gameBottom}, ${gameHeight}, ${gameMiddleY}`)
 
   const randomPuffaFish = () => {
     const numberOfPuffaFish: number = generic.getRandomValue(1, level);

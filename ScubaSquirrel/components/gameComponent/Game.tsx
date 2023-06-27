@@ -19,6 +19,7 @@ export default function Game({navigation, running, route}: any) {
   const gameStop = route.params.stopGame;
   const updateBankedAcorn = route.params.increaseBankedAcorn;
   const bankedAcorn = route.params.bankedAcorn;
+  let gameTimerID: any;
 
   const increaseStreakCount = (val: number) => {
     const newAcornCount: number = acornCount + val;
@@ -37,12 +38,28 @@ export default function Game({navigation, running, route}: any) {
     setTankAir (newTankAir);
   }
 
-  const lightColours = ['#00ffd0','#00ffea', '#00bfff']
-  // const lightColours = ['#13def4','#1eb5c6', '#65e0ed']
-  const darkColours = ['#00303b', '#000001', '#00361d']
-  // const darkColours = ['#08004c', '#2412c9', '#111112']
-  const lightColour = generic.getRandomValue(0,2)
-  const darkColour = generic.getRandomValue(0,2)
+  const breatheAir = () => {
+    setTankAir (tankAir - 1);
+  }
+
+  const initialiseGameStart = () => {
+    setSuitAir(10);
+    setTankAir(232);
+    setAcornCount(0);
+  }
+
+  useEffect(() => {
+    gameTimerID = setInterval(() => breatheAir(), 5000);
+    return () => clearInterval(gameTimerID);
+  }, [tankAir]);
+
+
+  // const lightColours = ['#00ffd0','#00ffea', '#00bfff']
+  const lightColour = '#00ffd0'
+  // const darkColours = ['#00303b', '#000001', '#00361d']
+  const darkColour = '#00303b'
+  // const lightColour = generic.getRandomValue(0,2)
+  // const darkColour = generic.getRandomValue(0,2)
 
   return (
     <>
@@ -50,7 +67,8 @@ export default function Game({navigation, running, route}: any) {
         <View style={styles.header}>
             <Header bankedAcorn = {bankedAcorn} navigation={navigation}/>
         </View>
-        <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}>
+        {/* <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}> */}
+        <LinearGradient style = {styles.gameBackground} colors={[lightColour, darkColour]}start={{x:1, y:0}}end={{x:1, y:1}}>
           <View style={styles.content}>
             <GameEngine
               ref={(ref) => { setGameEngine(ref) }}
@@ -66,11 +84,14 @@ export default function Game({navigation, running, route}: any) {
                     navigation.navigate("Death");
                     gameEngine.swap(entities(0));
                     setTimeout(function() {
-                      setAcornCount(0);
+                      initialiseGameStart();
                     }, 0)
                     break;
                   case 'collect_acorn': 
                     increaseStreakCount(1)
+                    break;
+                  case 'breathe': 
+                    breatheAir();
                     break;
                   case 'win_con':
                     updateBankedAcorn(acornCount);
@@ -79,7 +100,7 @@ export default function Game({navigation, running, route}: any) {
                     navigation.navigate('Win');
                     // gameEngine.stop();
                     setTimeout(function() {
-                      setAcornCount(0);
+                      initialiseGameStart();
                       gameEngine.swap(entities(levelStreak));
                     }, 0); 
                     break;

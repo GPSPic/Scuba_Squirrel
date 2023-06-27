@@ -10,7 +10,7 @@ import moveFish from "./moveFish";
 const Physics =(entities: any, {touches, time, dispatch} : any) => {
   let engine= entities.physics.engine
 
-    moveSquirrel(entities, touches);   
+    moveSquirrel(entities, touches, dispatch);   
     handleCollision(engine, dispatch);
     moveCrab(entities);    
     

@@ -6,8 +6,12 @@ export default function AirTank({tankAir, fillSuit}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={fillSuit}>
-        <Image source={require('../../assets/tank2.jpg')} style={styles.image} resizeMode='contain'/>
-        <Text style={styles.text}>{tankAir}l</Text>
+        <View>
+          <Image style={styles.image} source={require('../../assets/tank2.jpg')} resizeMode='contain'/>
+        </View>
+        <View>
+          <Text style={styles.text}>{tankAir}l</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -35,5 +39,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row'
   },
 });
