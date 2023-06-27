@@ -5,6 +5,7 @@ import entities from '../../game/entities';
 import { useState, useEffect } from 'react';
 import Physics from '../../game/utils/physics';
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import { LinearGradient } from 'expo-linear-gradient';
 import generic from '../../game/utils/generic';
 
@@ -12,13 +13,28 @@ export default function Game({navigation, running, route}: any) {
   const [gameEngine, setGameEngine] = useState(null)
   const [acornCount, setAcornCount] = useState(0)
   const [levelStreak, setLevelStreak] = useState(0)
+  const [suitAir, setSuitAir] = useState(10);
+  const [tankAir, setTankAir] = useState(232);
+
   const gameStop = route.params.stopGame;
   const updateBankedAcorn = route.params.increaseBankedAcorn;
   const bankedAcorn = route.params.bankedAcorn;
 
   const increaseStreakCount = (val: number) => {
-    const newAcornCount = acornCount + val;
+    const newAcornCount: number = acornCount + val;
     setAcornCount(newAcornCount)
+  }
+
+  const dumpSuit = () => {
+    const newAir: number = suitAir - 1;
+    setSuitAir (newAir);
+  }
+
+  const fillSuit = () => {
+    const newSuitAir: number = suitAir + 1;
+    const newTankAir: number = tankAir - 1;
+    setSuitAir (newSuitAir);
+    setTankAir (newTankAir);
   }
 
   const lightColours = ['#00ffd0','#00ffea', '#00bfff']
@@ -74,6 +90,9 @@ export default function Game({navigation, running, route}: any) {
             <StatusBar style="auto" hidden={true}/>
           </View> 
         </LinearGradient>
+        <View style={styles.footer}>
+          <Footer suitAir={suitAir} dumpSuit={dumpSuit} tankAir={tankAir} fillSuit={fillSuit}/>
+        </View>
       </LinearGradient>
     </>
   );
@@ -93,5 +112,8 @@ const styles = StyleSheet.create({
     },
     container:{
       flex:1,
+    },
+    footer:{
+      flex: 1,
     },
   })
