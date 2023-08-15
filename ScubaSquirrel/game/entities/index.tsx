@@ -18,10 +18,12 @@ import Seahorse from '../gameObjects/Seahorse';
 import KelpCentre from '../gameObjects/KelpCentre';
 
 
-export default (level:number, restart: any) => {
+export default (level:number, suitAir: number) => {
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
-  engine.gravity.y = 0.0;
+  // engine.gravity.y = (suitAir-10)* -0.1;
+  engine.gravity.y = 0;
+  // console.log(`gravity & suitAir: ${engine.gravity.y}, ${suitAir}`)
 
   const screenWidth: number = Dimensions.get("window").width;
   const screenHeight: number = Dimensions.get("window").height;

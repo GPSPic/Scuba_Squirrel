@@ -6,7 +6,7 @@ export default function Suit({suitAir, dumpSuit}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={dumpSuit}>
-        <Image source={require('../../assets/suit2.jpg')} style={styles.image} resizeMode='contain'/>
+        <Image source={require('../../assets/suit1.png')} style={styles.image} resizeMode='contain'/>
         <Text style={styles.text}>{suitAir}l</Text>
       </TouchableOpacity>
     </View>

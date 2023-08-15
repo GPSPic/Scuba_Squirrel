@@ -7,17 +7,20 @@ import moveCrab from "./moveCrab";
 import moveJellyFish from "./moveJellyFish";
 import moveFish from "./moveFish";
 
-const Physics =(entities: any, {touches, time, dispatch} : any) => {
+const Physics = (entities: any, {touches, time, dispatch} : any) => {
   let engine= entities.physics.engine
 
-    moveSquirrel(entities, touches, dispatch);   
-    handleCollision(engine, dispatch);
-    moveCrab(entities);    
-    
-    moveJellyFish(entities);
-    moveFish(entities);
-                    
-    Matter.Engine.update(engine, time.delta)
+  // if (tankAir < 0){
+  //   dispatch({ type: 'game_over' });
+  // }
+  moveSquirrel(entities, touches, dispatch);   
+  handleCollision(engine, dispatch);
+  moveCrab(entities);    
+  
+  moveJellyFish(entities);
+  moveFish(entities);
+                  
+  Matter.Engine.update(engine, time.delta)
                     
   return entities;
                

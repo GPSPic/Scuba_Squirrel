@@ -4,6 +4,7 @@ import { GameEngine } from 'react-native-game-engine';
 import entities from '../../game/entities';
 import { useState, useEffect } from 'react';
 import Physics from '../../game/utils/physics';
+import AirManagement from '../../game/utils/airManagement';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -72,9 +73,12 @@ export default function Game({navigation, running, route}: any) {
           <View style={styles.content}>
             <GameEngine
               ref={(ref) => { setGameEngine(ref) }}
-              systems={[Physics]}
-              entities={entities(levelStreak)}
+              systems={[Physics
+                // , AirManagement(tankAir)
+              ]}
+              entities={entities(levelStreak, suitAir)}
               running = {running}
+
               onEvent = {(e:any) => {
                 switch(e.type){
                   case 'game_over': 
@@ -82,7 +86,7 @@ export default function Game({navigation, running, route}: any) {
                     gameStop();
                     setLevelStreak(0);
                     navigation.navigate("Death");
-                    gameEngine.swap(entities(0));
+                    gameEngine.swap(entities(0, 10));
                     setTimeout(function() {
                       initialiseGameStart();
                     }, 0)
@@ -101,7 +105,7 @@ export default function Game({navigation, running, route}: any) {
                     // gameEngine.stop();
                     setTimeout(function() {
                       initialiseGameStart();
-                      gameEngine.swap(entities(levelStreak));
+                      gameEngine.swap(entities(levelStreak, suitAir));
                     }, 0); 
                     break;
                 }

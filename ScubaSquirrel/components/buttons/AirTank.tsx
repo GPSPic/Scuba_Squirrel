@@ -7,7 +7,7 @@ export default function AirTank({tankAir, fillSuit}) {
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={fillSuit}>
         <View>
-          <Image style={styles.image} source={require('../../assets/tank2.jpg')} resizeMode='contain'/>
+          <Image style={styles.image} source={require('../../assets/tank1.png')} resizeMode='contain'/>
         </View>
         <View>
           <Text style={styles.text}>{tankAir}l</Text>
