@@ -4,7 +4,9 @@ import { GameEngine } from 'react-native-game-engine';
 import entities from '../../game/entities';
 import { useState, useEffect } from 'react';
 import Physics from '../../game/utils/physics';
+import AirManagement from '../../game/utils/airManagement';
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import { LinearGradient } from 'expo-linear-gradient';
 import generic from '../../game/utils/generic';
 
@@ -12,21 +14,53 @@ export default function Game({navigation, running, route}: any) {
   const [gameEngine, setGameEngine] = useState(null)
   const [acornCount, setAcornCount] = useState(0)
   const [levelStreak, setLevelStreak] = useState(0)
+  const [suitAir, setSuitAir] = useState(10);
+  const [tankAir, setTankAir] = useState(232);
+
   const gameStop = route.params.stopGame;
   const updateBankedAcorn = route.params.increaseBankedAcorn;
   const bankedAcorn = route.params.bankedAcorn;
+  let gameTimerID: any;
 
   const increaseStreakCount = (val: number) => {
-    const newAcornCount = acornCount + val;
+    const newAcornCount: number = acornCount + val;
     setAcornCount(newAcornCount)
   }
 
-  const lightColours = ['#00ffd0','#00ffea', '#00bfff']
-  // const lightColours = ['#13def4','#1eb5c6', '#65e0ed']
-  const darkColours = ['#00303b', '#000001', '#00361d']
-  // const darkColours = ['#08004c', '#2412c9', '#111112']
-  const lightColour = generic.getRandomValue(0,2)
-  const darkColour = generic.getRandomValue(0,2)
+  const dumpSuit = () => {
+    const newAir: number = suitAir - 1;
+    setSuitAir (newAir);
+  }
+
+  const fillSuit = () => {
+    const newSuitAir: number = suitAir + 1;
+    const newTankAir: number = tankAir - 1;
+    setSuitAir (newSuitAir);
+    setTankAir (newTankAir);
+  }
+
+  const breatheAir = () => {
+    setTankAir (tankAir - 1);
+  }
+
+  const initialiseGameStart = () => {
+    setSuitAir(10);
+    setTankAir(232);
+    setAcornCount(0);
+  }
+
+  useEffect(() => {
+    gameTimerID = setInterval(() => breatheAir(), 5000);
+    return () => clearInterval(gameTimerID);
+  }, [tankAir]);
+
+
+  // const lightColours = ['#00ffd0','#00ffea', '#00bfff']
+  const lightColour = '#00ffd0'
+  // const darkColours = ['#00303b', '#000001', '#00361d']
+  const darkColour = '#00303b'
+  // const lightColour = generic.getRandomValue(0,2)
+  // const darkColour = generic.getRandomValue(0,2)
 
   return (
     <>
@@ -34,13 +68,17 @@ export default function Game({navigation, running, route}: any) {
         <View style={styles.header}>
             <Header bankedAcorn = {bankedAcorn} navigation={navigation}/>
         </View>
-        <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}>
+        {/* <LinearGradient style = {styles.gameBackground} colors={[lightColours[lightColour], darkColours[darkColour]]}start={{x:1, y:0}}end={{x:1, y:1}}> */}
+        <LinearGradient style = {styles.gameBackground} colors={[lightColour, darkColour]}start={{x:1, y:0}}end={{x:1, y:1}}>
           <View style={styles.content}>
             <GameEngine
               ref={(ref) => { setGameEngine(ref) }}
-              systems={[Physics]}
-              entities={entities(levelStreak)}
+              systems={[Physics
+                // , AirManagement(tankAir)
+              ]}
+              entities={entities(levelStreak, suitAir)}
               running = {running}
+
               onEvent = {(e:any) => {
                 switch(e.type){
                   case 'game_over': 
@@ -48,13 +86,16 @@ export default function Game({navigation, running, route}: any) {
                     gameStop();
                     setLevelStreak(0);
                     navigation.navigate("Death");
-                    gameEngine.swap(entities(0));
+                    gameEngine.swap(entities(0, 10));
                     setTimeout(function() {
-                      setAcornCount(0);
+                      initialiseGameStart();
                     }, 0)
                     break;
                   case 'collect_acorn': 
                     increaseStreakCount(1)
+                    break;
+                  case 'breathe': 
+                    breatheAir();
                     break;
                   case 'win_con':
                     updateBankedAcorn(acornCount);
@@ -63,8 +104,8 @@ export default function Game({navigation, running, route}: any) {
                     navigation.navigate('Win');
                     // gameEngine.stop();
                     setTimeout(function() {
-                      setAcornCount(0);
-                      gameEngine.swap(entities(levelStreak));
+                      initialiseGameStart();
+                      gameEngine.swap(entities(levelStreak, suitAir));
                     }, 0); 
                     break;
                 }
@@ -74,6 +115,9 @@ export default function Game({navigation, running, route}: any) {
             <StatusBar style="auto" hidden={true}/>
           </View> 
         </LinearGradient>
+        <View style={styles.footer}>
+          <Footer suitAir={suitAir} dumpSuit={dumpSuit} tankAir={tankAir} fillSuit={fillSuit}/>
+        </View>
       </LinearGradient>
     </>
   );
@@ -93,5 +137,8 @@ const styles = StyleSheet.create({
     },
     container:{
       flex:1,
+    },
+    footer:{
+      flex: 1,
     },
   })

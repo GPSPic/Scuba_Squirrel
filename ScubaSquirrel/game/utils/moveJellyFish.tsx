@@ -13,14 +13,14 @@ const moveJellyFish = (entities: any)=>{
     let jellyFishEntities: any[] = [];
     const screenHeight: number = Dimensions.get('window').height;
     const screenWidth: number = Dimensions.get('window').width;
-    const screenTopPos: number = screenWidth/12*1.45 + 30;
-    const screenBottomPos: number =  screenHeight - screenHeight/7 - 30;
+    const screenTopPos: number = screenWidth/12*1.45 + 45;
+    const screenBottomPos: number =  screenHeight*6/8 - 30;
 
   Object.values(filteredEntities)
     .forEach((jellyFish: any) => {
       if (jellyFish.body.label === 'JellyFish') {
         const jellyFishPosition: number = jellyFish.body.position.y;
-        // console.log(jellyFishPosition)
+        // console.log(`JP, SBP, STP, SH: ${jellyFishPosition}, ${screenBottomPos}, ${screenTopPos}, ${screenHeight}`)
         
         let moveValue;
         
@@ -28,6 +28,7 @@ const moveJellyFish = (entities: any)=>{
           jellyFish.direction *= -1
         } else if (jellyFishPosition >= screenBottomPos) {
           jellyFish.direction *= -1
+          Matter.Body.setPosition(jellyFish.body, {x:generic.getRandomValue(30, screenWidth- 30), y: jellyFishPosition})
         }
         moveValue = jellyFish.direction 
         // * generic.getRandomValue(1,2) 
